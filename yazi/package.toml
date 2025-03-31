@@ -1,0 +1,12 @@
+[plugin]
+deps = []
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-macchiato"
+rev = "fd85060"
+hash = "c34feed32d555e79ab9a0c0a7bdda2be"
+
+[[flavor.deps]]
+use = "PinThePenguine/sunset"
+rev = "181acd4"
+hash = "cc4c39af7098f02c42fec223fc1fc967"

@@ -1,0 +1,5 @@
+[open]
+rules = [
+  # { mime = "application/json", use = "edit" },
+  { name = "*.pdf", use = "open" },
+]
