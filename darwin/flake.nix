@@ -28,6 +28,18 @@
       ];
       specialArgs = { inherit inputs; };
     };
+    darwinConfigurations."Jimmie-Mac-Studio" = darwin.lib.darwinSystem {
+      modules = [
+        ./configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jimmie = import ./modules/home.nix;
+          }
+      ];
+      specialArgs = { inherit inputs; };
+    };
   };
 
 }
