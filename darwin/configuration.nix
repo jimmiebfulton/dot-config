@@ -34,6 +34,15 @@
     home = "/Users/jimmie";
   };
 
+  homebrew = {
+      enable = true;
+
+      casks = [
+        "wezterm"
+        "neovide"
+      ];
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
     bat
@@ -56,7 +65,6 @@
     ripgrep
     rustup
     starship
-    wezterm
     yazi
     zoxide
   ];

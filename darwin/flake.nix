@@ -13,9 +13,27 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    # Optional: Declarative tap management
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    homebrew-archetect = {
+      url = "github:archetect/homebrew-tap";
+      flake = false;
+    };
+
   };
 
-  outputs = inputs@{ self, darwin, nixpkgs, home-manager }: {
+  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-archetect }: {
     darwinConfigurations."Jimmies-Attack-Mac" = darwin.lib.darwinSystem {
       modules = [
         ./configuration.nix
@@ -24,6 +42,30 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.jimmie = import ./modules/home.nix;
+        }
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            # Install Homebrew under the default prefix
+            enable = true;
+
+            # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+            enableRosetta = true;
+
+            # User owning the Homebrew prefix
+            user = "jimmie";
+
+            taps = {
+              "homebrew/homebrew-core" = homebrew-core;
+              "homebrew/homebrew-cask" = homebrew-cask;
+              "archetect/tap" = homebrew-archetect;
+              };
+
+            # Automatically migrate existing Homebrew installations
+            autoMigrate = true;
+            # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+            # mutableTaps = false;
+          };
         }
       ];
       specialArgs = { inherit inputs; };
@@ -36,6 +78,20 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jimmie = import ./modules/home.nix;
+          }
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "jimmie";
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+                "archetect/tap" = homebrew-archetect;
+              };
+              autoMigrate = true;
+            };
           }
       ];
       specialArgs = { inherit inputs; };
