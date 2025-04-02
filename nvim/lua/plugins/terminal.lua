@@ -6,7 +6,7 @@ return {
     opts = {
       autochdir = true,
       persist_mode = false,
-      shell = "/opt/homebrew/bin/nu",
+      shell = "nu",
       hide_numbers = true,
       start_in_insert = true,
       on_create = function()

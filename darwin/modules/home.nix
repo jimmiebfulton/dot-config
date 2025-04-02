@@ -22,9 +22,11 @@
   programs.zsh = {
     enable = true;
     envExtra = ''
-      # Your .zshenv content goes here
-      export ZDOTDIR="$HOME/.config/zsh"
-      export EDITOR=nvim
+# Your .zshenv content goes here
+export ZDOTDIR="$HOME/.config/zsh"
+export EDITOR=nvim
+export XDG_CONFIG_HOME="/Users/jimmie/.config"
+export JJ_CONFIG="$HOME/.config/jj/config.toml"
     '';
   };
 

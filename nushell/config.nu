@@ -7,6 +7,7 @@ $env.config.show_banner = false
 
 $env.EDITOR = "nvim"
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
+$env.JJ_CONFIG = $"~/.config/jj/config.toml"
 
 if ("~/.config/nushell/local.nu" | path exists) {
   source "~/.config/nushell/local.nu"
@@ -46,5 +47,5 @@ use "~/.config/nushell/functions.nu" *
 source "~/.config/nushell/zoxide.nu"
 source "~/.config/nushell/carapace.nu"
 
-$env.LS_COLORS = (vivid generate one-dark)
+# $env.LS_COLORS = (vivid generate one-dark)
 

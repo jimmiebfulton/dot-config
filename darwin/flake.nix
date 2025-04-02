@@ -37,36 +37,26 @@
     darwinConfigurations."Jimmies-Attack-Mac" = darwin.lib.darwinSystem {
       modules = [
         ./configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jimmie = import ./modules/home.nix;
-        }
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            # Install Homebrew under the default prefix
-            enable = true;
-
-            # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-            enableRosetta = true;
-
-            # User owning the Homebrew prefix
-            user = "jimmie";
-
-            taps = {
-              "homebrew/homebrew-core" = homebrew-core;
-              "homebrew/homebrew-cask" = homebrew-cask;
-              "archetect/tap" = homebrew-archetect;
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jimmie = import ./modules/home.nix;
+          }
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = false;
+              user = "jimmie";
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+                "archetect/tap" = homebrew-archetect;
               };
-
-            # Automatically migrate existing Homebrew installations
-            autoMigrate = true;
-            # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-            # mutableTaps = false;
-          };
-        }
+              autoMigrate = true;
+            };
+          }
       ];
       specialArgs = { inherit inputs; };
     };
@@ -83,7 +73,7 @@
           {
             nix-homebrew = {
               enable = true;
-              enableRosetta = true;
+              enableRosetta = false;
               user = "jimmie";
               taps = {
                 "homebrew/homebrew-core" = homebrew-core;

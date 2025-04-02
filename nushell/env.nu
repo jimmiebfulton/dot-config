@@ -29,5 +29,5 @@
 
 
 /run/current-system/sw/bin/zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
-/opt/homebrew/bin/carapace _carapace nushell | save --force "~/.config/nushell/carapace.nu"
-  
+/run/current-system/sw/bin/carapace _carapace nushell | save --force "~/.config/nushell/carapace.nu"
+
