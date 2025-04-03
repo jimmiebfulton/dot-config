@@ -37,35 +37,7 @@
     home = "/Users/jimmie";
   };
 
-  homebrew = {
-      enable = true;
-
-      casks = [
-        "1password"
-        "claude"
-        "dropbox"
-        "forklift"
-        "jetbrains-toolbox"
-        "microsoft-office"
-        "microsoft-teams"
-        "whatsapp"
-        "parallels"
-        "rancher"
-      ];
-
-      masApps = {
-        "1Password for Safari" = 1569813296;
-        "Final Cut Pro" = 424389933;
-        "Facebook Messager" = 1480068668;
-        "Monodraw" = 920404675;
-        "Omnigraffle 7" = 1142578753;
-        "PDF Expert" = 1055273043;
-        "Pixelmator Pro" = 1289583905;
-        "Photomator - Photo Editor" = 1444636541;
-        "Things 3" = 904280696;
-        "Xcode" = 497799835; 
-      };
-  };
+  
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -123,6 +95,35 @@
     zoxide
   ];
 
+homebrew = {
+      enable = true;
+
+      casks = [
+        "1password"
+        "claude"
+        "dropbox"
+        "forklift"
+        "jetbrains-toolbox"
+        "microsoft-office"
+        "microsoft-teams"
+        "whatsapp"
+        "parallels"
+        "rancher"
+      ];
+
+      # masApps = {
+      #   "1Password for Safari" = 1569813296;
+      #   "Final Cut Pro" = 424389933;
+      #   "Facebook Messager" = 1480068668;
+      #   "Monodraw" = 920404675;
+      #   "Omnigraffle 7" = 1142578753;
+      #   "PDF Expert" = 1055273043;
+      #   "Pixelmator Pro" = 1289583905;
+      #   "Photomator - Photo Editor" = 1444636541;
+      #   "Things 3" = 904280696;
+      #   "Xcode" = 497799835; 
+      # };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
