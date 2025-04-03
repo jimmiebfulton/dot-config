@@ -1,2 +1,80 @@
 [user]
 name = "Jimmie Fulton"
+email = "jimmie.fulton@gmail.com"
+
+[ui]
+default-command = ["log"]
+diff.tool = [
+  "difft",
+  "--display=side-by-side-show-both",
+  "--color=always",
+  "$left",
+  "$right",
+]
+#pager = "delta"
+#pager = ":builtin"
+
+[aliases]
+dds = ["diff", "--tool", "difft-s"]
+ddi = ["diff", "--tool", "difft-i"]
+di = ["diff", "--tool", "idea"]
+sm = ["b", "s", "main"]
+smb = ["b", "s", "main", "-B"]
+gp = ["git", "push"]
+gf = ["git", "fetch"]
+gpn = ["git", "push", "--allow-new"]
+
+[colors]
+"commit_id prefix" = { fg = "blue", bold = false }
+"change_id prefix" = { fg = "red", bold = true }
+"working_copy change_id" = { fg = "yellow", underline = true }
+
+[template-aliases]
+"format_short_id(id)" = "id.shortest(5)"
+
+[git]
+push-bookmark-prefix = "jfulton/feature-"
+private-commits = "description(glob:'wip:*') | description(glob:'private:*')"
+
+[merge-tools.difft-s]
+program = "difft"
+diff-args = [
+  "--display=side-by-side-show-both",
+  "--color=always",
+  "$left",
+  "$right",
+]
+
+[merge-tools.difft-i]
+program = "difft"
+diff-args = ["--display=inline", "--color=always", "$left", "$right"]
+
+[merge-tools.araxis]
+program = "compare2" # Defaults to the name of the tool if not specified
+diff-args = ["-wait", "$left", "$right"]
+merge-args = [
+  "-wait",
+  "-merge",
+  "-testConflicts",
+  "-3",
+  "-a2",
+  "$left",
+  "$base",
+  "$right",
+  "$output",
+]
+
+[merge-tools.delta]
+program = "delta"
+diff-args = [
+  "--blame-code-style=syntax",
+  "--commit-decoration-style=box",
+  "--diff-so-fancy",
+  "$left",
+  "$right",
+]
+
+[merge-tools.idea]
+program = "/Users/jimmie/Applications/IntelliJ IDEA Ultimate.app/Contents/MacOS/idea" # Defaults to the name of the tool if not specified
+diff-args = ["diff", "$left", "$right"]
+merge-args = ["merge", "$left", "$right", "$base", "$output"]
