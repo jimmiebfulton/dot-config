@@ -77,6 +77,7 @@
     neofetch
     neovide
     neovim
+    nodejs_23
     nushell
     obsidian
     postman
