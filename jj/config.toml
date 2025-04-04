@@ -17,6 +17,7 @@ diff.tool = [
 [aliases]
 dds = ["diff", "--tool", "difft-s"]
 ddi = ["diff", "--tool", "difft-i"]
+ddd = ["diff", "--tool", "delta"]
 di = ["diff", "--tool", "idea"]
 sm = ["b", "s", "main"]
 smb = ["b", "s", "main", "-B"]
