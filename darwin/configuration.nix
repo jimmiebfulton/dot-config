@@ -105,6 +105,7 @@ homebrew = {
         "dropbox"
         "forklift"
         "jetbrains-toolbox"
+        "keyboard-maestro"
         "microsoft-office"
         "microsoft-teams"
         "whatsapp"
