@@ -25,11 +25,11 @@
     includes = [
       {
         path = "~/.config/git/work.inc";
-        condition = "gitdir:~/work";
+        condition = "gitdir:~/work/";
       }
       {
         path = "~/.config/git/personal.inc";
-        condition = "gitdir:~/personal";
+        condition = "gitdir:~/personal/";
       }
     ];
   };

@@ -47,6 +47,11 @@ export def --env jjp [...args] {
   jj describe --reset-author --no-edit
 }
 
+export def --env jjw [...args] {
+  jj config set --repo user.email "jimmie@ybor.ai"
+  jj describe --reset-author --no-edit
+}
+
 export def --env --wrapped jjcl [repo, ...rest] {
   jj git clone --colocate $repo ...$rest
 }
