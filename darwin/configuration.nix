@@ -84,6 +84,7 @@
     kanata
     kind
     kubectl
+    kubectx
     kustomize
     lazygit
     lazyjj
