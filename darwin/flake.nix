@@ -25,15 +25,9 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-
-    homebrew-archetect = {
-      url = "github:archetect/homebrew-tap";
-      flake = false;
-    };
-
   };
 
-  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, homebrew-archetect }: {
+  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask }: {
     darwinConfigurations."Jimmies-Attack-Mac" = darwin.lib.darwinSystem {
       modules = [
         ./configuration.nix
@@ -52,7 +46,6 @@
               taps = {
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
-                "archetect/tap" = homebrew-archetect;
               };
               autoMigrate = true;
             };
@@ -78,7 +71,6 @@
               taps = {
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
-                "archetect/tap" = homebrew-archetect;
               };
               autoMigrate = true;
             };

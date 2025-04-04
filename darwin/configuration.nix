@@ -99,6 +99,10 @@
 
 homebrew = {
       enable = true;
+      
+      taps = [
+        "archetect/tap"
+      ];
 
       casks = [
         "1password"
