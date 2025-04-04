@@ -68,6 +68,7 @@
     chatgpt
     claude-code
     curl
+    delta
     difftastic
     eza
     fd

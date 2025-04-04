@@ -17,7 +17,23 @@
     enable = true;
     userName = "Jimmie Fulton";
     userEmail = "jimmie.fulton@gmail.com"; # Replace with your actual email
+
+    delta = {
+      enable = true;
+    };
+
+    includes = [
+      {
+        path = "~/.config/git/work.inc";
+        condition = "gitdir:~/work";
+      }
+      {
+        path = "~/.config/git/personal.inc";
+        condition = "gitdir:~/personal";
+      }
+    ];
   };
+
 
   programs.zsh = {
     enable = true;
