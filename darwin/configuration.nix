@@ -80,6 +80,7 @@
     nodejs_23
     nushell
     obsidian
+    pnpm
     postman
     ripgrep
     raycast
