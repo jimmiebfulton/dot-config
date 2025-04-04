@@ -113,6 +113,7 @@ homebrew = {
         "rancher"
       ];
 
+      # TODO: Uncomment after mas is fixed
       # masApps = {
       #   "1Password for Safari" = 1569813296;
       #   "Final Cut Pro" = 424389933;
