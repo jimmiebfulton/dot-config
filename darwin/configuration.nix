@@ -75,6 +75,8 @@
     firefox
     fzf
     git
+    go
+    gopls
     gh
     google-chrome
     grpcurl

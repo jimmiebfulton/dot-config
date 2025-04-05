@@ -3,7 +3,7 @@ name = "Jimmie Fulton"
 email = "jimmie.fulton@gmail.com"
 
 [ui]
-default-command = ["log"]
+default-command = ["log", "--no-pager"]
 diff.tool = [
   "difft",
   "--display=side-by-side-show-both",
