@@ -121,6 +121,9 @@
     starship
     telegram-desktop
     tilt
+    typst
+    typstyle
+    typstfmt
     vivid
     wezterm
     yazi
