@@ -29,6 +29,17 @@
       };
 
       CustomUserPreferences = {
+        "com.apple.finder" = {
+          # ShowExternalHardDrivesOnDesktop = false;
+          # ShowHardDrivesOnDesktop = false;
+          ShowMountedServersOnDesktop = true;
+          ShowRemovableMediaOnDesktop = true;
+          # _FXSortFoldersFirst = true;
+          # FXDefaultSearchScope = "SCcf";
+          FXICloudDriveEnabled = 1;
+          FXICloudDriveDesktop = 1;
+          FXICloudDriveDocuments = 1;
+        };
         "com.apple.WindowManager" = {
           EnableStandardClickToShowDesktop = 0; # Click wallpaper to reveal desktop
           StandardHideDesktopIcons = 0; # Show items on desktop
