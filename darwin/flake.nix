@@ -28,7 +28,7 @@
   };
 
   outputs = inputs@{ self, darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask }: {
-    darwinConfigurations."Jimmies-Attack-Mac" = darwin.lib.darwinSystem {
+    darwinConfigurations."Jimmie-Macbook14-M3" = darwin.lib.darwinSystem {
       modules = [
         ./configuration.nix
           home-manager.darwinModules.home-manager

@@ -34,6 +34,8 @@
     ];
   };
 
+  # TODO: https://www.youtube.com/watch?v=XuQVbZ0wENE
+
 
   programs.zsh = {
     enable = true;
