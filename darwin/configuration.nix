@@ -102,6 +102,7 @@
     kustomize
     lazygit
     lazyjj
+    lua
     luarocks
     mas
     neofetch
