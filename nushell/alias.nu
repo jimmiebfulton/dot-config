@@ -12,4 +12,5 @@ export alias i = idea
 export alias c = clion
 export alias jji = jj git init --colocate
 export alias jjgc = jj git clone --colocate
+export alias drs = darwin-rebuild switch --flake ~/.config/darwin
 
