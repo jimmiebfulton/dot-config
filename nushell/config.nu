@@ -8,7 +8,6 @@ $env.config.show_banner = false
 $env.EDITOR = "nvim"
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
 $env.JJ_CONFIG = $"/Users/jimmie/.config/jj/config.toml"
-$env.BROWSER = "safari"
 
 if ("~/.config/nushell/local.nu" | path exists) {
   source "~/.config/nushell/local.nu"
