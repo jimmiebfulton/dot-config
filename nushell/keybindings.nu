@@ -11,6 +11,7 @@ let keybindings = [
             ]
         }
     }
+    
     {
         name: history_menu
         modifier: control
@@ -250,6 +251,20 @@ let keybindings = [
         keycode: backspace
         mode: [emacs, vi_insert]
         event: {edit: backspaceword}
+    }
+    {
+      name: delete_word_backward
+      modifier: alt
+      keycode: backspace
+      mode: [emacs, vi_normal, vi_insert]
+      event: {edit: backspaceword}
+    }
+    {
+      name: delete_word_foward
+      modifier: alt
+      keycode: delete
+      mode: [emacs, vi_normal, vi_insert]
+      event: {edit: deleteword }
     }
     {
         name: delete_one_character_forward
