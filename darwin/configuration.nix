@@ -111,6 +111,7 @@
     nodejs_23
     nushell
     obsidian
+    ollama
     pnpm
     postman
     ripgrep
