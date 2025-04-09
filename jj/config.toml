@@ -24,6 +24,7 @@ smb = ["b", "s", "main", "-B"]
 gp = ["git", "push"]
 gf = ["git", "fetch"]
 gpn = ["git", "push", "--allow-new"]
+rm = ["rebase", "-d", "main"]
 
 [colors]
 "commit_id prefix" = { fg = "blue", bold = false }
