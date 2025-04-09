@@ -72,6 +72,7 @@
   # System packages
   environment.systemPackages = with pkgs; [
     _1password-cli
+    aichat
     aider-chat
     awscli
     bat
