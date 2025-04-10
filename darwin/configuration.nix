@@ -115,6 +115,8 @@
     ollama
     pnpm
     postman
+    python313
+    python313Packages.pip
     ripgrep
     raycast
     rustup
@@ -126,6 +128,7 @@
     typst
     typstyle
     typstfmt
+    uv
     vivid
     wezterm
     yazi
