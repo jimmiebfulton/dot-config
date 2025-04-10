@@ -141,6 +141,7 @@ homebrew = {
 
       casks = [
         "1password"
+        "araxis-merge"
         "claude"
         "dropbox"
         "forklift"
