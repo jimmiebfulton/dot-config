@@ -121,7 +121,6 @@
     raycast
     rustup
     signal-desktop
-    slack
     starship
     telegram-desktop
     tilt
@@ -156,6 +155,7 @@ homebrew = {
         "whatsapp"
         "parallels"
         "rancher"
+        "slack"
       ];
 
       # TODO: Uncomment after mas is fixed: https://github.com/mas-cli/mas/issues/724
