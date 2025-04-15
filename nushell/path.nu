@@ -8,6 +8,7 @@ export-env {
   $env.PATH = ($env.PATH | append ($env.HOME | path join 'bin'))
   $env.PATH = ($env.PATH | append ($env.HOME | path join 'go/bin'))
   $env.PATH = ($env.PATH | append ($env.HOME | path join '.local/bin'))
+  $env.PATH = ($env.PATH | append ($env.HOME | path join '.rd/bin'))
   $env.PATH = ($env.PATH | append "/Applications/Araxis Merge.app/Contents/Utilities/")
   $env.PATH = ($env.PATH | append "/opt/homebrew/opt/llvm/bin/")
   $env.PATH = ($env.PATH | append "/usr/local/go/bin")
