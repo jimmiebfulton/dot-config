@@ -77,7 +77,6 @@
     awscli
     bat
     carapace
-    chatgpt
     claude-code
     curl
     delta
