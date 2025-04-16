@@ -137,6 +137,11 @@ homebrew = {
       enable = true;
       
       taps = [
+        "archetect/tap"
+      ];
+
+      brews = [
+        "archetect"
       ];
 
       casks = [
@@ -152,6 +157,7 @@ homebrew = {
         "microsoft-office"
         "microsoft-teams"
         "whatsapp"
+        "openssl@3"
         "parallels"
         "rancher"
         "signal"
