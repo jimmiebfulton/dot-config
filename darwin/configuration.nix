@@ -91,6 +91,7 @@
     gopls
     gh
     google-chrome
+    google-cloud-sdk
     grpcurl
     jujutsu
     jjui
@@ -120,7 +121,6 @@
     ripgrep
     raycast
     rustup
-    signal-desktop
     starship
     telegram-desktop
     tilt
@@ -129,7 +129,6 @@
     typstfmt
     uv
     vivid
-    wezterm
     yazi
     zoom-us
     zoxide
@@ -144,6 +143,7 @@ homebrew = {
       casks = [
         "1password"
         "araxis-merge"
+        "chatgpt"
         "claude"
         "dropbox"
         "forklift"
@@ -155,7 +155,9 @@ homebrew = {
         "whatsapp"
         "parallels"
         "rancher"
+        "signal"
         "slack"
+        "wezterm"
       ];
 
       # TODO: Uncomment after mas is fixed: https://github.com/mas-cli/mas/issues/724
