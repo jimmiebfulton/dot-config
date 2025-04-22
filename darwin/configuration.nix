@@ -105,7 +105,15 @@
     lazyjj
     lua
     luarocks
+    markdownlint-cli2
     mas
+    mdbook
+    mdbook-toc
+    mdbook-mermaid
+    mdbook-admonish
+    mdbook-pdf-outline
+    mdbook-pagetoc
+    mdbook-epub
     neofetch
     neovide
     neovim
@@ -157,7 +165,6 @@ homebrew = {
         "microsoft-office"
         "microsoft-teams"
         "whatsapp"
-        "openssl@3"
         "parallels"
         "rancher"
         "signal"
