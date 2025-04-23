@@ -17,8 +17,13 @@ export def --env rd. [...args] {
 }
 
 # Remove one or more directories, safely
-export def rd [...args] {
-  d rd ...$args
+export def rd [...patterns: string] {
+    let files = $patterns | each { |pattern| glob $pattern } | flatten
+    if ($files | length) > 0 {
+        d rd ...$files
+    } else {
+        echo $"No files matching patterns '($patterns | str join ', ')' found."
+    }
 }
 
 # Make a directory and enter it
