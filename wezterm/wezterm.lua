@@ -194,6 +194,11 @@ config.keys = {
 			name = "tabs",
 		}),
 	},
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = "DisableDefaultAssignment",
+	},
 }
 
 config.key_tables = {
