@@ -136,7 +136,6 @@
     typstfmt
     uv
     vivid
-    wkhtmltopdf
     yazi
     zoom-us
     zoxide
