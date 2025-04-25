@@ -67,6 +67,15 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
+    # Maple Mono (Ligature TTF unhinted)
+    maple-mono.truetype
+    # Maple Mono NF (Ligature unhinted)
+    maple-mono.NF-unhinted
+    maple-mono.NF
+    # Maple Mono NF CN (Ligature unhinted)
+    maple-mono.NF-CN-unhinted
+    maple-mono.NF-CN
+
   ];
 
   # System packages
