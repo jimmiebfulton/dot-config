@@ -24,8 +24,10 @@ config.colors = {
 
 -- Fonts
 config.font_size = 14.0
--- config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = 500 })
-config.font = wezterm.font("Maple Mono NF", { weight = 400 })
+-- config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = 400 })
+-- config.font = wezterm.font("Cascadia Code NF", { weight = 400 })
+config.font = wezterm.font("Cascadia Mono NF", { weight = 400 })
+-- config.font = wezterm.font("Maple Mono NF", { weight = 400 })
 
 -- Behavior
 config.send_composed_key_when_left_alt_is_pressed = false
