@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "archetect-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740611627,
+        "narHash": "sha256-I/LIoU8BKE0hU8ht3NoS93EkfT7hB9Ru1uvJGyjztJM=",
+        "owner": "archetect",
+        "repo": "homebrew-tap",
+        "rev": "2dc3c7602a46bac2a08d18c5a2be2cf5cd8c2055",
+        "type": "github"
+      },
+      "original": {
+        "owner": "archetect",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -173,14 +189,32 @@
         "type": "github"
       }
     },
+    "p6m-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740429970,
+        "narHash": "sha256-ZUoaGRrqLKKOlmPL1GMuAJJSXQ8NhCwQsnehBTUh7YM=",
+        "owner": "p6m-dev",
+        "repo": "homebrew-tap",
+        "rev": "0cf10fc22296d8678a23b85279f5e2878af247e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "p6m-dev",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "archetect-tap": "archetect-tap",
         "darwin": "darwin",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "p6m-tap": "p6m-tap"
       }
     }
   },

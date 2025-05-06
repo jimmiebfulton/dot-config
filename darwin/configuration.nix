@@ -84,7 +84,6 @@
     awscli
     bat
     carapace
-    claude-code
     curl
     delta
     difftastic
@@ -99,6 +98,7 @@
     google-chrome
     google-cloud-sdk
     grpcurl
+    jdk23
     jujutsu
     jjui
     just
@@ -114,6 +114,7 @@
     luarocks
     markdownlint-cli2
     mas
+    maven
     mdbook
     mdbook-toc
     mdbook-mermaid
@@ -124,7 +125,6 @@
     neofetch
     neovide
     neovim
-    nodejs_23
     nushell
     obsidian
     pnpm
@@ -152,10 +152,13 @@ homebrew = {
       
       taps = [
         "archetect/tap"
+        "p6m-dev/tap"
       ];
 
       brews = [
         "archetect"
+        "node"
+        "p6m"
       ];
 
       casks = [

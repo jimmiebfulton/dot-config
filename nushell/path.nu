@@ -5,6 +5,7 @@ export-env {
   $env.PATH = ($env.PATH | prepend "/nix/var/nix/profiles/default/bin")
   $env.PATH = ($env.PATH | prepend ($env.HOME | path join ".nix-profile/bin"))
   $env.PATH = ($env.PATH | prepend ($env.HOME | path join ".cargo/bin"))
+  $env.PATH = ($env.PATH | prepend ($env.HOME | path join ".npm-global/bin"))
   $env.PATH = ($env.PATH | prepend "/usr/local/bin")
   $env.PATH = ($env.PATH | append ($env.HOME | path join 'bin'))
   $env.PATH = ($env.PATH | append ($env.HOME | path join 'go/bin'))
