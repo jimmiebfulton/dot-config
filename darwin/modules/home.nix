@@ -46,6 +46,7 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME="/Users/jimmie/.config"
 export JJ_CONFIG="/Users/jimmie/.config/jj/config.toml"
 export PNPM_HOME="/Users/jimmie/bin"
+export PATH="/Users/jimmie/.cargo/bin$PATH"
     '';
   };
 

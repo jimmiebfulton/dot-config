@@ -29,13 +29,17 @@
       url = "github:archetect/homebrew-tap";
       flake = false;
     };
+    nikitabobko-tap = {
+        url = "github:nikitabobko/homebrew-tap";
+        flake = false;
+    };
     p6m-tap = {
       url = "github:p6m-dev/homebrew-tap";
       flake = false;
     };
   };
 
-  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, archetect-tap, p6m-tap }: {
+  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, archetect-tap, nikitabobko-tap, p6m-tap }: {
     darwinConfigurations."Jimmie-Macbook14-M3" = darwin.lib.darwinSystem {
       modules = [
         ./configuration.nix
@@ -55,6 +59,7 @@
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "archetect/archetect-tap" = archetect-tap;
+                "nikitabobko/homebrew-tap" = nikitabobko-tap;
                 "p6m-dev/homebrew-tap" = p6m-tap;
               };
               autoMigrate = true;
@@ -82,6 +87,7 @@
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "archetect/archetect-tap" = archetect-tap;
+                "nikitabobko/homebrew-tap" = nikitabobko-tap;
                 "p6m-dev/homebrew-tap" = p6m-tap;
               };
               autoMigrate = true;

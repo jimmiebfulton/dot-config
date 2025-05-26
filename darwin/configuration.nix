@@ -82,6 +82,7 @@
     aichat
     aider-chat
     awscli
+    bash-language-server
     bat
     carapace
     curl
@@ -111,8 +112,10 @@
     lazygit
     lazyjj
     lua
+    lua-language-server
     luarocks
     markdownlint-cli2
+    markdown-oxide
     mas
     maven
     mdbook
@@ -127,21 +130,26 @@
     neovim
     nushell
     obsidian
+    pandoc
     pnpm
     postman
     python313
     python313Packages.pip
+    pyright
     ripgrep
+    ripgrep-all
     raycast
     rustup
     starship
     telegram-desktop
     tilt
+    typescript-language-server
     typst
     typstyle
     typstfmt
     uv
     vivid
+    yaml-language-server
     yazi
     zoom-us
     zoxide
@@ -152,6 +160,7 @@ homebrew = {
       
       taps = [
         "archetect/tap"
+        "nikitabobko/tap"
         "p6m-dev/tap"
       ];
 
@@ -163,6 +172,7 @@ homebrew = {
 
       casks = [
         "1password"
+        "aerospace"
         "araxis-merge"
         "chatgpt"
         "claude"
