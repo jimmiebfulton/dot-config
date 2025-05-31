@@ -133,6 +133,7 @@
     pandoc
     pnpm
     postman
+    presenterm
     python313
     python313Packages.pip
     pyright
