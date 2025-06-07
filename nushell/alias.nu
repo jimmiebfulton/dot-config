@@ -15,4 +15,10 @@ export alias c = clion
 export alias jji = jj git init --colocate
 export alias jjgc = jj git clone --colocate
 export alias drs = darwin-rebuild switch --flake ~/.config/darwin
+export alias cs = claude --model sonnet
+export alias co = claude --model opus
+export alias cta = cargo xtask test-all
+export alias cti = cargo xtask test-integration
+export alias ctu = cargo xtask test-unit
+export alias ctr = cargo xtask run
 

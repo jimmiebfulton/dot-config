@@ -6,6 +6,8 @@
 
   # System configuration
   system = {
+    # Required for user-specific options (homebrew, system defaults, etc.)
+    primaryUser = "jimmie";
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
@@ -152,7 +154,6 @@
     vivid
     yaml-language-server
     yazi
-    zoom-us
     zoxide
   ];
 
