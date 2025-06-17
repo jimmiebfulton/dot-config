@@ -20,5 +20,8 @@ export alias co = claude --model opus
 export alias cta = cargo xtask test-all
 export alias cti = cargo xtask test-integration
 export alias ctu = cargo xtask test-unit
-export alias ctr = cargo xtask run
+export alias cxr = cargo xtask run
+export alias cxt = cargo xtask test
+export alias cxi = cargo xtask install
+export alias cx = cargo xtask
 

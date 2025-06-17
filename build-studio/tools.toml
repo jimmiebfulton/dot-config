@@ -1,0 +1,94 @@
+[global]
+max_concurrent_tools = 10
+default_timeout_seconds = 300
+require_confirmation = true
+log_executions = true
+auto_update = false
+
+[categories.system]
+enabled = false
+
+[categories.system.default_permissions.scopes]
+Network = "Deny"
+System = "Deny"
+Home = "Deny"
+Project = "Ask"
+
+[categories.system.default_permissions.custom]
+
+[categories.system.settings]
+
+[categories.system.tools]
+
+[categories.process]
+enabled = false
+
+[categories.process.default_permissions.scopes]
+Project = "Ask"
+Home = "Deny"
+System = "Deny"
+Network = "Deny"
+
+[categories.process.default_permissions.custom]
+
+[categories.process.settings]
+
+[categories.process.tools]
+
+[categories.debug]
+enabled = false
+
+[categories.debug.default_permissions.scopes]
+Project = "Allow"
+Network = "Ask"
+Home = "Ask"
+System = "Deny"
+
+[categories.debug.default_permissions.custom]
+
+[categories.debug.settings]
+
+[categories.debug.tools]
+
+[categories.file_io]
+enabled = true
+
+[categories.file_io.default_permissions.scopes]
+Project = "Allow"
+Home = "Ask"
+System = "Deny"
+Network = "Deny"
+
+[categories.file_io.default_permissions.custom]
+
+[categories.file_io.settings]
+
+[categories.file_io.tools.write_file]
+enabled = true
+
+[categories.file_io.tools.write_file.settings]
+
+[categories.file_io.tools.write_file.environment]
+
+[categories.file_io.tools.write_file.permissions.scopes]
+Home = "Ask"
+System = "Deny"
+Network = "Ask"
+Project = "Allow"
+
+[categories.file_io.tools.write_file.permissions.custom]
+
+[categories.file_io.tools.read_file]
+enabled = true
+
+[categories.file_io.tools.read_file.settings]
+
+[categories.file_io.tools.read_file.environment]
+
+[categories.file_io.tools.read_file.permissions.scopes]
+System = "Deny"
+Network = "Ask"
+Home = "Ask"
+Project = "Allow"
+
+[categories.file_io.tools.read_file.permissions.custom]
