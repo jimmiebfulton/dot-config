@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(darwin-rebuild switch:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(nix-env:*)",
+      "Bash(sudo ls:*)",
+      "Bash(tccutil reset:*)",
+      "Bash(brew list:*)",
+      "Bash(defaults read:*)",
+      "Bash(sudo tccutil reset:*)",
+      "Bash(sqlite3:*)",
+      "Bash(sudo killall:*)",
+      "Bash(sudo rm:*)",
+      "Bash(darwin-rebuild:*)"
+    ],
+    "deny": []
+  }
+}
