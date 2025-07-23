@@ -62,5 +62,24 @@ export PATH="/Users/jimmie/.cargo/bin:$PATH"
     '';
   };
 
+  programs.nushell = {
+    enable = true;
+    # Load the local.nu file which contains sensitive environment variables
+    extraConfig = ''
+      # Source local configuration if it exists
+      if ($"($env.HOME)/.config/nushell/local.nu" | path exists) {
+        source ~/.config/nushell/local.nu
+      }
+    '';
+  };
+
+  # Set environment variables for all shells
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    XDG_CONFIG_HOME = "/Users/jimmie/.config";
+    JJ_CONFIG = "/Users/jimmie/.config/jj/config.toml";
+    PNPM_HOME = "/Users/jimmie/bin";
+  };
+
   # Additional home configurations go here
 }

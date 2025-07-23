@@ -10,6 +10,7 @@
     bash-language-server
     bat
     carapace
+    coreutils-prefixed
     curl
     delta
     difftastic
@@ -59,6 +60,7 @@
     pnpm
     postman
     presenterm
+    protobuf
     python313
     python313Packages.pip
     pyright
