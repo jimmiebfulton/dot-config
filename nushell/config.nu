@@ -1,5 +1,7 @@
 # config.nu
 
+use std/dirs;
+
 $env.config.edit_mode = 'vi' 
 $env.config.table.mode = 'compact'
 $env.config.buffer_editor = "nvim"

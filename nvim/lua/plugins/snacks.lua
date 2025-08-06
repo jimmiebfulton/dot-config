@@ -8,7 +8,8 @@ return {
       picker = {
         formatters = {
           file = {
-            truncate = 50,
+            filename_first = true,
+            truncate = 250,
           },
         },
         win = {

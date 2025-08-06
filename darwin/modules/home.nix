@@ -18,6 +18,12 @@
     userName = "Jimmie Fulton";
     userEmail = "jimmie.fulton@gmail.com"; # Replace with your actual email
 
+    extraConfig = {
+      credential = {
+        helper = "osxkeychain";
+      };
+    };
+
     delta = {
       enable = true;
     };

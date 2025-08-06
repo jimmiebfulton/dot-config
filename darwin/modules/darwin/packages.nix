@@ -6,7 +6,7 @@
     _1password-cli
     aichat
     aider-chat
-    awscli
+    awscli2
     bash-language-server
     bat
     carapace
@@ -14,11 +14,13 @@
     curl
     delta
     difftastic
+    dotnet-sdk
     eza
     fd
     firefox
     fzf
     git
+    glow
     go
     gopls
     gh
@@ -51,6 +53,7 @@
     mdbook-pdf-outline
     mdbook-pagetoc
     mdbook-epub
+    mdcat
     neofetch
     neovide
     neovim
