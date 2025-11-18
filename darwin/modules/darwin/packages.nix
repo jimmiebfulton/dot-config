@@ -17,14 +17,12 @@
     dotnet-sdk
     eza
     fd
-    firefox
     fzf
     git
     glow
     go
     gopls
     gh
-    google-chrome
     google-cloud-sdk
     grpcurl
     jdk23
@@ -69,7 +67,6 @@
     pyright
     ripgrep
     ripgrep-all
-    raycast
     rustup
     starship
     telegram-desktop
