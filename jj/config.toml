@@ -15,6 +15,7 @@ diff-formatter = [
 #pager = ":builtin"
 
 [aliases]
+ci = ["commit", "-m", "initial commit"]
 dds = ["diff", "--tool", "difft-s"]
 ddi = ["diff", "--tool", "difft-i"]
 ddd = ["diff", "--tool", "delta"]
