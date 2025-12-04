@@ -4,7 +4,7 @@ email = "jimmie.fulton@gmail.com"
 
 [ui]
 default-command = ["log", "--no-pager"]
-diff.tool = [
+diff-formatter = [
   "difft",
   "--display=side-by-side-show-both",
   "--color=always",
@@ -43,8 +43,10 @@ rm = ["rebase", "-d", "main"]
 "format_short_id(id)" = "id.shortest(5)"
 
 [git]
-push-bookmark-prefix = "jfulton/feature-"
 private-commits = "description(glob:'wip:*') | description(glob:'private:*')"
+
+[templates]
+git_push_bookmark = '"jfulton/feature-" ++ change_id.short()'
 
 [merge-tools.difft-s]
 program = "difft"

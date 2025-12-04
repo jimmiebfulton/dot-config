@@ -79,6 +79,7 @@
   users.users.jimmie = {
     name = "jimmie";
     home = "/Users/jimmie";
+    uid = 501;
   };
 
   # Allow unfree packages

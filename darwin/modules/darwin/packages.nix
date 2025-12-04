@@ -25,7 +25,7 @@
     gh
     google-cloud-sdk
     grpcurl
-    jdk23
+    jdk21
     jujutsu
     jjui
     just
@@ -74,7 +74,6 @@
     typescript-language-server
     typst
     typstyle
-    typstfmt
     uv
     vivid
     yaml-language-server

@@ -15,17 +15,15 @@
   # For example:
   programs.git = {
     enable = true;
-    userName = "Jimmie Fulton";
-    userEmail = "jimmie.fulton@gmail.com"; # Replace with your actual email
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Jimmie Fulton";
+        email = "jimmie.fulton@gmail.com";
+      };
       credential = {
         helper = "osxkeychain";
       };
-    };
-
-    delta = {
-      enable = true;
     };
 
     includes = [
@@ -38,6 +36,11 @@
         condition = "gitdir:~/personal/";
       }
     ];
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
   };
 
   # TODO: https://www.youtube.com/watch?v=XuQVbZ0wENE
