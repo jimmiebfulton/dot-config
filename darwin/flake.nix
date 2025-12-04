@@ -60,7 +60,7 @@
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
-              "archetect/archetect-tap" = archetect-tap;
+              "archetect/homebrew-tap" = archetect-tap;
               "nikitabobko/homebrew-tap" = nikitabobko-tap;
               "p6m-dev/homebrew-tap" = p6m-tap;
             };

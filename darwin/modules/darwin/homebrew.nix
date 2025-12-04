@@ -3,8 +3,16 @@
 {
   homebrew = {
     enable = true;
+
+    onActivation = {
+      autoUpdate = false;  # don't run `brew update` (taps are managed by nix-homebrew)
+      upgrade = true;      # run `brew upgrade` on darwin-rebuild
+      cleanup = "zap";     # remove unlisted packages
+    };
     
     taps = [
+      "homebrew/core"
+      "homebrew/cask"
       "archetect/tap"
       "nikitabobko/tap"
       "p6m-dev/tap"
