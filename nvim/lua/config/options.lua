@@ -5,9 +5,6 @@ vim.g.root_spec = { "lsp", { ".jj", ".git", "lua" }, "cwd" }
 vim.g.lazyvim_picker = "snacks" -- Or "fzf" or "snacks"
 vim.g.snacks_animate = true -- Enable animations for snacks picker
 vim.opt.timeoutlen = 500
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrw = 1
--- vim.o.shell = "nu"
 vim.wo.signcolumn = "auto:2"
 
 if vim.g.neovide then
