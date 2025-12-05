@@ -63,13 +63,13 @@ return {
       {
         "<c-j>",
         "<cmd>wincmd j<cr>",
-        desc = "Window Up",
+        desc = "Window Down",
         mode = { "t" },
       },
       {
         "<c-k>",
         "<cmd>wincmd k<cr>",
-        desc = "Window Down",
+        desc = "Window Up",
         mode = { "t" },
       },
       {

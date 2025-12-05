@@ -1,75 +1,45 @@
+-- LazyVim provides these gitsigns defaults:
+--   ]h / [h      — next/prev hunk
+--   ]H / [H      — last/first hunk
+--   <leader>ghs  — stage hunk
+--   <leader>ghr  — reset hunk (revert changes)
+--   <leader>ghR  — reset buffer
+--   <leader>ghS  — stage buffer
+--   <leader>ghu  — undo stage hunk
+--   <leader>ghp  — preview hunk inline
+--   <leader>ghb  — blame line
+--   <leader>ghB  — blame buffer
+--   <leader>ghd  — diff this
+--   <leader>ghD  — diff this ~
+--   ih           — text object for hunk (use with d, y, v, etc.)
+--
+-- This config adds extra toggles under <leader>gt
+
 return {
   {
     "lewis6991/gitsigns.nvim",
-    opts = {},
-    config = function(_, opts)
-      require("gitsigns").setup({
-        on_attach = function(bufnr)
-          local gitsigns = require("gitsigns")
-
-          local function map(mode, l, r, opts)
-            opts = opts or {}
-            opts.buffer = bufnr
-            vim.keymap.set(mode, l, r, opts)
-          end
-
-          -- Navigation
-          map("n", "]c", function()
-            if vim.wo.diff then
-              vim.cmd.normal({ "]c", bang = true })
-            else
-              gitsigns.nav_hunk("next")
-            end
-          end)
-
-          map("n", "[c", function()
-            if vim.wo.diff then
-              vim.cmd.normal({ "[c", bang = true })
-            else
-              gitsigns.nav_hunk("prev")
-            end
-          end)
-
-          -- Actions
-          map("n", "<leader>hs", gitsigns.stage_hunk)
-          map("n", "<leader>hr", gitsigns.reset_hunk)
-
-          map("v", "<leader>hs", function()
-            gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-          end)
-
-          map("v", "<leader>hr", function()
-            gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-          end)
-
-          map("n", "<leader>hS", gitsigns.stage_buffer)
-          map("n", "<leader>hR", gitsigns.reset_buffer)
-          map("n", "<leader>hp", gitsigns.preview_hunk)
-          map("n", "<leader>hi", gitsigns.preview_hunk_inline)
-
-          map("n", "<leader>hb", function()
-            gitsigns.blame_line({ full = true })
-          end)
-
-          map("n", "<leader>hd", gitsigns.diffthis)
-
-          map("n", "<leader>hD", function()
-            gitsigns.diffthis("~")
-          end)
-
-          map("n", "<leader>hQ", function()
-            gitsigns.setqflist("all")
-          end)
-          map("n", "<leader>hq", gitsigns.setqflist)
-
-          -- Toggles
-          map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
-          map("n", "<leader>tw", gitsigns.toggle_word_diff)
-
-          -- Text object
-          map({ "o", "x" }, "ih", gitsigns.select_hunk)
+    keys = {
+      {
+        "<leader>gtb",
+        function()
+          require("gitsigns").toggle_current_line_blame()
         end,
-      })
-    end,
+        desc = "Toggle Line Blame",
+      },
+      {
+        "<leader>gtw",
+        function()
+          require("gitsigns").toggle_word_diff()
+        end,
+        desc = "Toggle Word Diff",
+      },
+      {
+        "<leader>gtd",
+        function()
+          require("gitsigns").toggle_deleted()
+        end,
+        desc = "Toggle Deleted",
+      },
+    },
   },
 }
