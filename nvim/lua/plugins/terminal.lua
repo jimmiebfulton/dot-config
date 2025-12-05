@@ -41,8 +41,10 @@ local terminal_configs = {
   },
 }
 
--- Track which terminals were hidden (for restore)
+-- Track which terminals were hidden (for restore) in order
 _G.snacks_hidden_terms = _G.snacks_hidden_terms or {}
+-- Track the order terminals were opened
+_G.snacks_terminal_order = _G.snacks_terminal_order or {}
 
 -- Focus terminal if visible and not current, toggle if current or closed
 local function smart_terminal(cmd, opts)
@@ -57,8 +59,18 @@ local function smart_terminal(cmd, opts)
       vim.cmd.startinsert()
     end
   else
-    -- Terminal not visible, open it
+    -- Terminal not visible, open it and track order
     Snacks.terminal(cmd, opts)
+    -- Track this terminal's count for ordering
+    local count = opts.count
+    -- Remove if already in order list, then add to end
+    for i, c in ipairs(_G.snacks_terminal_order) do
+      if c == count then
+        table.remove(_G.snacks_terminal_order, i)
+        break
+      end
+    end
+    table.insert(_G.snacks_terminal_order, count)
   end
 end
 
@@ -81,12 +93,25 @@ function _G.toggle_all_terminals()
       term:hide()
     end
   elseif #_G.snacks_hidden_terms > 0 then
-    -- Restore only the terminals that were previously visible
+    -- Build a map of count -> term for ordering
+    local term_by_count = {}
     for _, term in ipairs(_G.snacks_hidden_terms) do
-      if term:buf_valid() and not term:win_valid() then
+      if term:buf_valid() then
+        local term_info = vim.b[term.buf].snacks_terminal
+        if term_info and term_info.id then
+          term_by_count[term_info.id] = term
+        end
+      end
+    end
+    
+    -- Restore in the order they were originally opened
+    for _, count in ipairs(_G.snacks_terminal_order) do
+      local term = term_by_count[count]
+      if term and not term:win_valid() then
         term:show()
       end
     end
+    
     _G.snacks_hidden_terms = {}
   end
 end

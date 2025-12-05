@@ -9,7 +9,8 @@ return {
     opts = {
       auto_start = true,
       log_level = "warn",
-      terminal_cmd = "/Users/jimmie/.npm-global/bin/claude",
+      -- Use nushell to run claude, which has the proper PATH
+      terminal_cmd = "nu -l -c 'claude --dangerously-skip-permissions'",
       terminal = {
         split_side = "right",
         split_width_percentage = 0.4,
