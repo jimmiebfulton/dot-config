@@ -53,7 +53,7 @@ return {
         -- },
       },
       terminal = {
-        enabled = false,
+        -- Configuration is in terminal.lua
       },
     },
     -- stylua: ignore

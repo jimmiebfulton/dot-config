@@ -55,7 +55,6 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME="/Users/jimmie/.config"
 export JJ_CONFIG="/Users/jimmie/.config/jj/config.toml"
 export PNPM_HOME="/Users/jimmie/bin"
-export PATH="/Users/jimmie/.cargo/bin$PATH"
     '';
   };
 
@@ -67,7 +66,6 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME="/Users/jimmie/.config"
 export JJ_CONFIG="/Users/jimmie/.config/jj/config.toml"
 export PNPM_HOME="/Users/jimmie/bin"
-export PATH="/Users/jimmie/.cargo/bin:$PATH"
     '';
   };
 
@@ -89,6 +87,13 @@ export PATH="/Users/jimmie/.cargo/bin:$PATH"
     JJ_CONFIG = "/Users/jimmie/.config/jj/config.toml";
     PNPM_HOME = "/Users/jimmie/bin";
   };
+
+  # Add paths for all shells
+  home.sessionPath = [
+    "$HOME/.npm-global/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/bin"
+  ];
 
   # Additional home configurations go here
 }
