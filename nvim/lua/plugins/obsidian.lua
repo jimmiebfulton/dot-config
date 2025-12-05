@@ -15,7 +15,7 @@ return {
     -- Required.
     "nvim-lua/plenary.nvim",
     "hrsh7th/nvim-cmp",
-    "echasnovski/mini.pick",
+    "nvim-mini/mini.pick",
     -- see below for full list of optional dependencies 👇
   },
   opts = {
