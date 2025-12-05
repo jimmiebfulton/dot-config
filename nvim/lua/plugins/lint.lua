@@ -1,3 +1,5 @@
+local markdownlint_config = vim.fn.stdpath("config") .. "/support/markdownlint.yaml"
+
 return {
   {
     "mfussenegger/nvim-lint",
@@ -5,7 +7,7 @@ return {
     opts = {
       linters = {
         ["markdownlint-cli2"] = {
-          args = { "--config", "/Users/jimmie/.config/nvim/support/markdownlint.yaml", "--" },
+          args = { "--config", markdownlint_config, "--" },
         },
       },
     },
@@ -19,7 +21,7 @@ return {
       },
       formatters = {
         ["markdownlint-cli2"] = {
-          args = { "--config", "/Users/jimmie/.config/nvim/support/markdownlint.yaml", "--" },
+          args = { "--config", markdownlint_config, "--" },
         },
       },
     },
