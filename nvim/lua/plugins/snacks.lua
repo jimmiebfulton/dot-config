@@ -6,6 +6,23 @@ return {
         replace_netrw = false,
       },
       picker = {
+        sources = {
+          files = {
+            hidden = true,
+            exclude = { ".git", ".jj" },
+          },
+          grep = {
+            hidden = true,
+            exclude = { ".git", ".jj" },
+          },
+          grep_buffers = {
+            hidden = true,
+          },
+          explorer = {
+            hidden = true,
+            exclude = { ".git", ".jj" },
+          },
+        },
         formatters = {
           file = {
             filename_first = true,
