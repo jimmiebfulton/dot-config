@@ -6,21 +6,23 @@ return {
         replace_netrw = false,
       },
       picker = {
+        -- Global defaults: show hidden files but exclude ignored directories
+        hidden = true,
+        ignored = false,
+        exclude = { ".git", ".jj", "target" },
         sources = {
+          -- Must explicitly set hidden=true per source to override source defaults
           files = {
             hidden = true,
-            exclude = { ".git", ".jj" },
           },
           grep = {
             hidden = true,
-            exclude = { ".git", ".jj" },
           },
           grep_buffers = {
             hidden = true,
           },
           explorer = {
             hidden = true,
-            exclude = { ".git", ".jj" },
           },
         },
         formatters = {
