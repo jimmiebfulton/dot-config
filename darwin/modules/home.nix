@@ -66,6 +66,11 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME="/Users/jimmie/.config"
 export JJ_CONFIG="/Users/jimmie/.config/jj/config.toml"
 export PNPM_HOME="/Users/jimmie/bin"
+
+# Source nix-daemon if available
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
     '';
   };
 
@@ -88,11 +93,19 @@ export PNPM_HOME="/Users/jimmie/bin"
     PNPM_HOME = "/Users/jimmie/bin";
   };
 
-  # Add paths for all shells
+  # Add paths for all shells (matching nushell path.nu)
   home.sessionPath = [
+    "/usr/local/bin"
     "$HOME/.npm-global/bin"
     "$HOME/.cargo/bin"
+    "$HOME/.nix-profile/bin"
+    "/nix/var/nix/profiles/default/bin"
+    "/run/current-system/sw/bin"
+    "/opt/homebrew/bin"
     "$HOME/bin"
+    "$HOME/go/bin"
+    "$HOME/.local/bin"
+    "$HOME/.rd/bin"
   ];
 
   # Additional home configurations go here

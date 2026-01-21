@@ -11,6 +11,7 @@ diff-formatter = [
   "$left",
   "$right",
 ]
+diff-editor = ":builtin"
 #pager = "delta"
 #pager = ":builtin"
 

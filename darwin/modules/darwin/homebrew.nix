@@ -14,11 +14,13 @@
       "homebrew/core"
       "homebrew/cask"
       "archetect/tap"
+      "atlassian/acli"
       "nikitabobko/tap"
       "p6m-dev/tap"
     ];
 
     brews = [
+      "acli"
       "archetect"
       "node"
       "p6m"

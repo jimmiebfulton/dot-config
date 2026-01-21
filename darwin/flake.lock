@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "atlassian-acli-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768799781,
+        "narHash": "sha256-nseNSA0CJYhB0AM5Z39jp5hHqaXF6HpCY71d+lu8yDQ=",
+        "owner": "atlassian",
+        "repo": "homebrew-acli",
+        "rev": "17dac2e0e9f1d11b3259c06accb5e4d16b7bbf52",
+        "type": "github"
+      },
+      "original": {
+        "owner": "atlassian",
+        "repo": "homebrew-acli",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -175,6 +191,7 @@
     "root": {
       "inputs": {
         "archetect-tap": "archetect-tap",
+        "atlassian-acli-tap": "atlassian-acli-tap",
         "darwin": "darwin",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",

@@ -37,9 +37,13 @@
       url = "github:p6m-dev/homebrew-tap";
       flake = false;
     };
+    atlassian-acli-tap = {
+      url = "github:atlassian/homebrew-acli";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, archetect-tap, nikitabobko-tap, p6m-tap }:
+  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, archetect-tap, nikitabobko-tap, p6m-tap, atlassian-acli-tap }:
   let
     # Common configuration shared across all hosts
     mkDarwinSystem = hostConfig: darwin.lib.darwinSystem {
@@ -61,6 +65,7 @@
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
               "archetect/homebrew-tap" = archetect-tap;
+              "atlassian/homebrew-acli" = atlassian-acli-tap;
               "nikitabobko/homebrew-tap" = nikitabobko-tap;
               "p6m-dev/homebrew-tap" = p6m-tap;
             };

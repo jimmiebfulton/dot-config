@@ -1,0 +1,9 @@
+version: 1
+current_profile: 0ee93628-abd2-4646-8ee1-351a4264f79c:712020:42ffb093-75f0-4591-87da-78da28423e97
+profiles:
+    - site: ybor.atlassian.net
+      cloud_id: 0ee93628-abd2-4646-8ee1-351a4264f79c
+      account_id: 712020:42ffb093-75f0-4591-87da-78da28423e97
+      display_name: Jimmie Fulton
+      email: jimmie@ybor.ai
+      auth_type: oauth
