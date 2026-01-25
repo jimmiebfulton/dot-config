@@ -43,6 +43,30 @@
     enableGitIntegration = true;
   };
 
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "*" = {
+        extraOptions = {
+          AddKeysToAgent = "yes";
+        };
+      };
+      "github.com" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_ed25519_personal";
+        identitiesOnly = true;
+      };
+      "github.com-work" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_ed25519_work";
+        identitiesOnly = true;
+      };
+    };
+  };
+
   # TODO: https://www.youtube.com/watch?v=XuQVbZ0wENE
 
 
