@@ -12,6 +12,7 @@ export alias a = archetect
 export alias y = yazi
 export alias i = idea
 export alias c = clion
+export alias cld = claude --dangerously-skip-permissions
 export alias jji = jj git init --colocate
 export alias jjgc = jj git clone --colocate
 export alias drs = sudo darwin-rebuild switch --flake ~/.config/darwin
