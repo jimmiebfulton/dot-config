@@ -64,6 +64,19 @@
           location = "~/Documents/Screenshots";
           type = "png";
         };
+        # Disable Mission Control keyboard shortcuts
+        # 32 = Mission Control (Ctrl+Up)
+        # 33 = Application Windows (Ctrl+Down)
+        # 34 = Move left a space (Ctrl+Left)
+        # 35 = Move right a space (Ctrl+Right)
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotKeys = {
+            "32" = { enabled = false; };  # Disable Ctrl+Up (Mission Control)
+            "33" = { enabled = false; };  # Disable Ctrl+Down (Application Windows)
+            "34" = { enabled = false; };  # Disable Ctrl+Left (Move left a space)
+            "35" = { enabled = false; };  # Disable Ctrl+Right (Move right a space)
+          };
+        };
       };
     };
     stateVersion = 5;

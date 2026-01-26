@@ -167,6 +167,11 @@ return {
       { "<C-j>", "<cmd>wincmd j<cr>", desc = "Window Down", mode = "t" },
       { "<C-k>", "<cmd>wincmd k<cr>", desc = "Window Up", mode = "t" },
       { "<C-l>", "<cmd>wincmd l<cr>", desc = "Window Right", mode = "t" },
+      -- Arrow key parity for terminal mode
+      { "<C-Left>", "<cmd>wincmd h<cr>", desc = "Window Left", mode = "t" },
+      { "<C-Down>", "<cmd>wincmd j<cr>", desc = "Window Down", mode = "t" },
+      { "<C-Up>", "<cmd>wincmd k<cr>", desc = "Window Up", mode = "t" },
+      { "<C-Right>", "<cmd>wincmd l<cr>", desc = "Window Right", mode = "t" },
       -- Toggle all terminals
       {
         "<C-\\>",
