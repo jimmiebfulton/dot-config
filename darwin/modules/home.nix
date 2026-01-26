@@ -35,6 +35,10 @@
         path = "~/.config/git/personal.inc";
         condition = "gitdir:~/personal/";
       }
+      {
+        path = "~/.config/git/personal.inc";
+        condition = "gitdir:~/.config/";
+      }
     ];
   };
 
@@ -48,9 +52,7 @@
     enableDefaultConfig = false;
     matchBlocks = {
       "*" = {
-        extraOptions = {
-          AddKeysToAgent = "yes";
-        };
+        addKeysToAgent = "yes";
       };
       "github.com" = {
         hostname = "github.com";
