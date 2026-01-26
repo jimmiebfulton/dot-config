@@ -64,12 +64,11 @@ program = "difft"
 diff-args = ["--display=inline", "--color=always", "$left", "$right"]
 
 [merge-tools.araxis]
-program = "compare2" # Defaults to the name of the tool if not specified
+program = "/Users/jimmie/bin/araxis-merge"
 diff-args = ["-wait", "$left", "$right"]
 merge-args = [
   "-wait",
   "-merge",
-  "-testConflicts",
   "-3",
   "-a2",
   "$left",
@@ -89,6 +88,6 @@ diff-args = [
 ]
 
 [merge-tools.idea]
-program = "/Users/jimmie/Applications/IntelliJ IDEA Ultimate.app/Contents/MacOS/idea" # Defaults to the name of the tool if not specified
+program = "/Users/jimmie/Applications/IntelliJ IDEA.app/Contents/MacOS/idea"
 diff-args = ["diff", "$left", "$right"]
 merge-args = ["merge", "$left", "$right", "$base", "$output"]
