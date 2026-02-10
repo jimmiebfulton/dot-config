@@ -47,6 +47,125 @@
     enableGitIntegration = true;
   };
 
+  programs.jujutsu = {
+    enable = true;
+
+    settings = {
+      user = {
+        name = "Jimmie Fulton";
+        email = "jimmie.fulton@gmail.com";
+      };
+
+      ui = {
+        default-command = ["log" "--no-pager"];
+        diff-formatter = [
+          "difft"
+          "--display=side-by-side-show-both"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
+        diff-editor = ":builtin";
+      };
+
+      revset-aliases = {
+        "closest_bookmark(to)" = "heads(::to & bookmarks())";
+      };
+
+      aliases = {
+        ci = ["commit" "-m" "initial commit"];
+        dds = ["diff" "--tool" "difft-s"];
+        ddi = ["diff" "--tool" "difft-i"];
+        ddd = ["diff" "--tool" "delta"];
+        di = ["diff" "--tool" "idea"];
+        sm = ["b" "s" "main"];
+        sme = ["b" "s" "main" "-r" "@"];
+        smeb = ["b" "s" "main" "-r" "@" "-B"];
+        smp = ["b" "s" "main" "-r" "@-"];
+        smpb = ["b" "s" "main" "-r" "@-" "-B"];
+        smb = ["b" "s" "main" "-B"];
+        gc = ["git" "clone" "--colocate"];
+        gf = ["git" "fetch"];
+        gp = ["git" "push"];
+        gpa = ["git" "push" "--all"];
+        gpn = ["git" "push" "--allow-new"];
+        rao = ["git" "remote" "add" "origin"];
+        rro = ["git" "remote" "remove" "origin"];
+        rm = ["rebase" "-d" "main"];
+        # Move nearest ancestor bookmark forward smartly:
+        #   If @ is a blank commit (empty + no description), tug to @-
+        #   If @ has content or a description, tug to @
+        tug = ["util" "exec" "--" "sh" "-c"
+          ''
+            blank=$(jj log --no-graph -r '@ & empty() & description(exact:"")' -T 'change_id' 2>/dev/null)
+            if [ -n "$blank" ]; then
+              jj bookmark move --from 'closest_bookmark(@)' --to '@-'
+            else
+              jj bookmark move --from 'closest_bookmark(@)' --to '@'
+            fi
+          ''
+          "jj-tug"
+        ];
+        # Move nearest ancestor bookmark to exactly where specified (precise)
+        tugto = ["bookmark" "move" "--from" "closest_bookmark(@)"];
+      };
+
+      colors = {
+        "commit_id prefix" = { fg = "blue"; bold = false; };
+        "change_id prefix" = { fg = "red"; bold = true; };
+        "working_copy change_id" = { fg = "yellow"; underline = true; };
+      };
+
+      template-aliases = {
+        "format_short_id(id)" = "id.shortest(5)";
+      };
+
+      git = {
+        private-commits = "description(glob:'wip:*') | description(glob:'private:*')";
+      };
+
+      templates = {
+        git_push_bookmark = ''"jfulton/feature-" ++ change_id.short()'';
+      };
+
+      merge-tools = {
+        difft-s = {
+          program = "difft";
+          diff-args = [
+            "--display=side-by-side-show-both"
+            "--color=always"
+            "$left"
+            "$right"
+          ];
+        };
+        difft-i = {
+          program = "difft";
+          diff-args = ["--display=inline" "--color=always" "$left" "$right"];
+        };
+        araxis = {
+          program = "/Users/jimmie/bin/araxis-merge";
+          diff-args = ["-wait" "$left" "$right"];
+          merge-args = ["-wait" "-merge" "-3" "-a2" "$left" "$base" "$right" "$output"];
+        };
+        delta = {
+          program = "delta";
+          diff-args = [
+            "--blame-code-style=syntax"
+            "--commit-decoration-style=box"
+            "--diff-so-fancy"
+            "$left"
+            "$right"
+          ];
+        };
+        idea = {
+          program = "/Users/jimmie/Applications/IntelliJ IDEA.app/Contents/MacOS/idea";
+          diff-args = ["diff" "$left" "$right"];
+          merge-args = ["merge" "$left" "$right" "$base" "$output"];
+        };
+      };
+    };
+  };
+
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -79,7 +198,6 @@
 export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR=nvim
 export XDG_CONFIG_HOME="/Users/jimmie/.config"
-export JJ_CONFIG="/Users/jimmie/.config/jj/config.toml"
 export PNPM_HOME="/Users/jimmie/bin"
     '';
   };
@@ -90,7 +208,6 @@ export PNPM_HOME="/Users/jimmie/bin"
 # Ensure nix-installed tools are available in bash
 export EDITOR=nvim
 export XDG_CONFIG_HOME="/Users/jimmie/.config"
-export JJ_CONFIG="/Users/jimmie/.config/jj/config.toml"
 export PNPM_HOME="/Users/jimmie/bin"
 
 # Source nix-daemon if available
@@ -115,7 +232,6 @@ fi
   home.sessionVariables = {
     EDITOR = "nvim";
     XDG_CONFIG_HOME = "/Users/jimmie/.config";
-    JJ_CONFIG = "/Users/jimmie/.config/jj/config.toml";
     PNPM_HOME = "/Users/jimmie/bin";
   };
 
