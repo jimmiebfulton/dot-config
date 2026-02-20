@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should manage
@@ -249,6 +249,13 @@ fi
     "$HOME/.local/bin"
     "$HOME/.rd/bin"
   ];
+
+  # Bootstrap Claude Code native installer (self-manages updates afterward)
+  home.activation.installClaudeCode = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    if [ ! -f "$HOME/.local/bin/claude" ]; then
+      ${pkgs.curl}/bin/curl -fsSL https://claude.ai/install.sh | ${pkgs.bash}/bin/bash
+    fi
+  '';
 
   # Additional home configurations go here
 }
