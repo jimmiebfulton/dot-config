@@ -121,12 +121,19 @@ return {
     "folke/snacks.nvim",
     opts = {
       terminal = {
+        auto_insert = false, -- Don't auto-enter terminal mode on BufEnter; lets Ctrl+hjkl navigate panes
         win = {
           wo = {
             signcolumn = "no",
           },
           keys = {
             hide_slash = false, -- Disable LazyVim's <C-/> hide so we can use it for float
+            -- Override LazyVim's Ctrl+hjkl from terminal-mode to normal-mode only,
+            -- so terminal mode passes keys to the shell (e.g. Ctrl+l to clear).
+            nav_h = { "<C-h>", "<cmd>wincmd h<cr>", desc = "Go to Left Window", mode = "n" },
+            nav_j = { "<C-j>", "<cmd>wincmd j<cr>", desc = "Go to Lower Window", mode = "n" },
+            nav_k = { "<C-k>", "<cmd>wincmd k<cr>", desc = "Go to Upper Window", mode = "n" },
+            nav_l = { "<C-l>", "<cmd>wincmd l<cr>", desc = "Go to Right Window", mode = "n" },
           },
         },
       },
@@ -162,12 +169,11 @@ return {
         desc = "Terminal Float",
         mode = { "n", "t" },
       },
-      -- Window navigation from terminal mode
-      { "<C-h>", "<cmd>wincmd h<cr>", desc = "Window Left", mode = "t" },
-      { "<C-j>", "<cmd>wincmd j<cr>", desc = "Window Down", mode = "t" },
-      { "<C-k>", "<cmd>wincmd k<cr>", desc = "Window Up", mode = "t" },
-      { "<C-l>", "<cmd>wincmd l<cr>", desc = "Window Right", mode = "t" },
-      -- Arrow key parity for terminal mode
+      -- Window navigation from terminal mode (Ctrl+Arrow)
+      -- Note: Ctrl+hjkl are intentionally NOT mapped in terminal mode so they
+      -- pass through to the shell (e.g. Ctrl+l to clear screen). Use Ctrl+Arrow
+      -- to navigate panes from terminal mode, or <Esc><Esc> to enter terminal-
+      -- normal mode where Ctrl+hjkl work for pane navigation.
       { "<C-Left>", "<cmd>wincmd h<cr>", desc = "Window Left", mode = "t" },
       { "<C-Down>", "<cmd>wincmd j<cr>", desc = "Window Down", mode = "t" },
       { "<C-Up>", "<cmd>wincmd k<cr>", desc = "Window Up", mode = "t" },
