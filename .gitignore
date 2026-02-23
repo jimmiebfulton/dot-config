@@ -13,4 +13,5 @@ zsh/.zcompdump
 zsh/local.zsh
 nushell/local.nu
 jj/repos/
+onyx/
 
