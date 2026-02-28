@@ -25,4 +25,3 @@ export alias cxr = cargo xtask run
 export alias cxt = cargo xtask test
 export alias cxi = cargo xtask install
 export alias cx = cargo xtask
-

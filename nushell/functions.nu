@@ -67,3 +67,12 @@ export def --env lscolors [...args] {
     $env.LS_COLORS = (vivid generate $theme)
   }
 }
+
+# Claude Code multi-account
+export def --wrapped claude-work [...args] {
+  with-env { CLAUDE_CONFIG_DIR: ($env.HOME | path join ".claude-work") } { claude --dangerously-skip-permissions ...$args }
+}
+
+export def --wrapped claude-personal [...args] {
+  with-env { CLAUDE_CONFIG_DIR: ($env.HOME | path join ".claude-personal") } { claude --dangerously-skip-permissions ...$args }
+}
