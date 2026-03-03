@@ -76,3 +76,19 @@ export def --wrapped claude-work [...args] {
 export def --wrapped claude-personal [...args] {
   with-env { CLAUDE_CONFIG_DIR: ($env.HOME | path join ".claude-personal") } { claude --dangerously-skip-permissions ...$args }
 }
+
+export def --wrapped clp [...args] {
+  claude-personal ...$args
+}
+
+export def --wrapped clw [...args] {
+  claude-work ...$args
+}
+
+export def --wrapped clpr [...args] {
+  claude-personal --resume ...$args
+}
+
+export def --wrapped clwr [...args] {
+  claude-work --resume ...$args
+}
