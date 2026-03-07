@@ -93,15 +93,15 @@
         rro = ["git" "remote" "remove" "origin"];
         rm = ["rebase" "-d" "main"];
         # Move nearest ancestor bookmark forward smartly:
-        #   If @ is a blank commit (empty + no description), tug to @-
-        #   If @ has content or a description, tug to @
+        #   If @ has both changes and a description, tug to @
+        #   Otherwise, tug to @-
         tug = ["util" "exec" "--" "sh" "-c"
           ''
-            blank=$(jj log --no-graph -r '@ & empty() & description(exact:"")' -T 'change_id' 2>/dev/null)
-            if [ -n "$blank" ]; then
-              jj bookmark move --from 'closest_bookmark(@)' --to '@-'
-            else
+            has_content=$(jj log --no-graph -r '@ & ~empty() & ~description(exact:"")' -T 'change_id' 2>/dev/null)
+            if [ -n "$has_content" ]; then
               jj bookmark move --from 'closest_bookmark(@)' --to '@'
+            else
+              jj bookmark move --from 'closest_bookmark(@)' --to '@-'
             fi
           ''
           "jj-tug"

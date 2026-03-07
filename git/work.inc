@@ -1,1 +1,1 @@
-/nix/store/ngcpm3lidgq4kkvrvl8bscmlw6n9qlcp-home-manager-files/.config/git/work.inc
+/nix/store/rcv96hncmi9bdhzlc8gzh175a8lkqb38-home-manager-files/.config/git/work.inc
