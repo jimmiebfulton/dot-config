@@ -9,7 +9,6 @@ $env.config.show_banner = false
 
 $env.EDITOR = "nvim"
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
-$env.JJ_CONFIG = $"/Users/jimmie/.config/jj/config.toml"
 $env.PNPM_HOME = $"/Users/jimmie/bin"
 $env.OLLAMA_KEEP_ALIVE = "-1"
 

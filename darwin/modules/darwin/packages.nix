@@ -5,7 +5,6 @@
   environment.systemPackages = with pkgs; [
     _1password-cli
     aichat
-    aider-chat
     awscli2
     bash-language-server
     bat
@@ -52,7 +51,7 @@
     mdbook-pagetoc
     mdbook-epub
     mdcat
-    neofetch
+    fastfetch
     neovide
     neovim
     nushell

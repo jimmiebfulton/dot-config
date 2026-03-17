@@ -206,6 +206,19 @@
         gpgsign = true
   '';
 
+  home.file.".config/jj/conf.d/work.toml".text = ''
+    --when.repositories = ["~/work"]
+
+    [user]
+    name = "Jimmie Fulton"
+    email = "jimmie@ybor.ai"
+
+    [signing]
+    backend = "ssh"
+    key = "~/.ssh/id_ed25519_work"
+    sign-all = true
+  '';
+
   # TODO: https://www.youtube.com/watch?v=XuQVbZ0wENE
 
 

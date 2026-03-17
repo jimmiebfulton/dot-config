@@ -48,13 +48,11 @@ export def --env c. [...args] {
 }
 
 export def --env jjp [...args] {
-  jj config set --repo user.email "jimmie.fulton@gmail.com"
-  jj describe --reset-author --no-edit
+  jj metaedit --update-author --config 'user.email="jimmie.fulton@gmail.com"'
 }
 
 export def --env jjw [...args] {
-  jj config set --repo user.email "jimmie@ybor.ai"
-  jj describe --reset-author --no-edit
+  jj metaedit --update-author --config 'user.email="jimmie@ybor.ai"'
 }
 
 export def --env --wrapped jjcl [repo, ...rest] {
