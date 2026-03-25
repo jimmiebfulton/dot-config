@@ -9,7 +9,7 @@ local terminal_configs = {
       count = 1,
       win = {
         position = "bottom",
-        height = 0.35,
+        height = 0.6,
       },
     },
   },
@@ -20,7 +20,7 @@ local terminal_configs = {
       env = { SNACKS_TERM_ID = "second" },
       win = {
         position = "bottom",
-        height = 0.35,
+        height = 0.6,
       },
     },
   },
