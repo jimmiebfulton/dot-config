@@ -95,8 +95,9 @@
     uid = 501;
   };
 
-  # Allow unfree packages
+  # Allow unfree packages and accept Android SDK license
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
   
   # Enable Nix command and flakes
   nix.settings = {
