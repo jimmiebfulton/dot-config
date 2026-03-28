@@ -1,6 +1,21 @@
 { config, pkgs, ... }:
 
+let
+  androidSdk = pkgs.androidenv.composeAndroidPackages {
+    platformVersions = [ "35" ];
+    buildToolsVersions = [ "35.0.0" ];
+    includeEmulator = true;
+    includeSystemImages = true;
+    systemImageTypes = [ "google_apis" ];
+    abiVersions = [ "arm64-v8a" ];
+    includeNDK = false;
+    includeSources = false;
+  };
+in
 {
+  # Set ANDROID_HOME so Gradle can find the SDK
+  environment.variables.ANDROID_HOME = "${androidSdk.androidsdk}/libexec/android-sdk";
+
   # System packages
   environment.systemPackages = with pkgs; [
     _1password-cli
