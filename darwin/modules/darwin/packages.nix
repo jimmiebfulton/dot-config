@@ -5,6 +5,7 @@
   environment.systemPackages = with pkgs; [
     _1password-cli
     aichat
+    android-tools
     awscli2
     bash-language-server
     bat
@@ -23,12 +24,14 @@
     gopls
     gh
     google-cloud-sdk
+    gradle
     grpcurl
     jdk21
     jujutsu
     jjui
     just
     k9s
+    kotlin
     kanata
     kind
     kubectl

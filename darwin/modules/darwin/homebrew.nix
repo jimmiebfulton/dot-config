@@ -23,6 +23,7 @@
       "acli"
       "archetect"
       "node"
+      "xcodegen"
       "p6m"
     ];
 
