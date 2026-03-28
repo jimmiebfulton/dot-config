@@ -10,6 +10,15 @@ let
     abiVersions = [ "arm64-v8a" ];
     includeNDK = false;
     includeSources = false;
+    extraLicenses = [
+      "android-sdk-license"
+      "android-googletv-license"
+      "android-sdk-arm-dbt-license"
+      "google-gdk-license"
+      "intel-android-extra-license"
+      "intel-android-sysimage-license"
+      "mips-android-sysimage-license"
+    ];
   };
 in
 {
