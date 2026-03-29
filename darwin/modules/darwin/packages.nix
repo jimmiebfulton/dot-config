@@ -25,6 +25,13 @@ in
   # Set ANDROID_HOME so Gradle can find the SDK
   environment.variables.ANDROID_HOME = "${androidSdk.androidsdk}/libexec/android-sdk";
 
+  # Add Android SDK tools to PATH
+  environment.systemPath = [
+    "${androidSdk.androidsdk}/libexec/android-sdk/emulator"
+    "${androidSdk.androidsdk}/libexec/android-sdk/platform-tools"
+    "${androidSdk.androidsdk}/libexec/android-sdk/cmdline-tools/19.0/bin"
+  ];
+
   # System packages
   environment.systemPackages = with pkgs; [
     _1password-cli
