@@ -15,4 +15,5 @@ nushell/local.nu
 jj/repos/
 onyx/
 swiftpm/
+.android/
 
