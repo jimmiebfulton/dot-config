@@ -37,6 +37,13 @@ export def pbc [...args] {
   pbcopy < $args.0
 }
 
+# Copy absolute path of target (default: cwd) to clipboard
+export def pc [target?: string] {
+  let path = ($target | default "." | path expand)
+  $path | pbcopy
+  print $path
+}
+
 # Open Intellij in current directory
 export def --env i. [...args] {
   idea .
