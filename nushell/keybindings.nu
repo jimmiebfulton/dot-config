@@ -470,13 +470,11 @@ let keybindings = [
         event: {edit: capitalizechar}
     }
     {
-      name: zoxide_menu
+      name: zoxide_interactive
       modifier: control
-      keycode: char_o
+      keycode: char_f
       mode: [emacs, vi_normal, vi_insert]
-      event: [
-        { send: menu name: zoxide_menu }
-      ]
+      event: { send: executehostcommand cmd: "zi" }
     }
     {
       name: edit
