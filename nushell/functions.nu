@@ -44,6 +44,13 @@ export def pc [target?: string] {
   print $path
 }
 
+# Fuzzy-find a project via zoxide and copy its path to clipboard
+export def pcf [...args] {
+  let path = (^zoxide query --interactive -- ...$args | str trim -r -c "\n")
+  $path | pbcopy
+  print $path
+}
+
 # Open Intellij in current directory
 export def --env i. [...args] {
   idea .
