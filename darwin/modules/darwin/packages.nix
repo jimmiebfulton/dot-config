@@ -75,6 +75,7 @@ in
     luarocks
     markdownlint-cli2
     markdown-oxide
+    marksman
     mas
     maven
     mdbook
