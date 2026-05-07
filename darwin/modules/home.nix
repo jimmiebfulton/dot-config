@@ -72,6 +72,10 @@
         "closest_bookmark(to)" = "heads(::to & bookmarks())";
       };
 
+      revsets = {
+        immutable_heads = "builtin_immutable_heads() | dev";
+      };
+
       aliases = {
         ci = ["commit" "-m" "initial commit"];
         dds = ["diff" "--tool" "difft-s"];
@@ -91,17 +95,20 @@
         gpn = ["git" "push" "--allow-new"];
         rao = ["git" "remote" "add" "origin"];
         rro = ["git" "remote" "remove" "origin"];
+        rd = ["rebase" "-d" "dev"];
         rm = ["rebase" "-d" "main"];
         # Move nearest ancestor bookmark forward smartly:
         #   If @ has both changes and a description, tug to @
         #   Otherwise, tug to @-
+        #   Optional $1: bookmark name to move (defaults to closest_bookmark(@))
         tug = ["util" "exec" "--" "sh" "-c"
           ''
             has_content=$(jj log --no-graph -r '@ & ~empty() & ~description(exact:"")' -T 'change_id' 2>/dev/null)
-            if [ -n "$has_content" ]; then
-              jj bookmark move --from 'closest_bookmark(@)' --to '@'
+            TARGET=$([ -n "$has_content" ] && echo '@' || echo '@-')
+            if [ -n "$1" ]; then
+              jj bookmark move --from "$1" --to "$TARGET"
             else
-              jj bookmark move --from 'closest_bookmark(@)' --to '@-'
+              jj bookmark move --from 'closest_bookmark(@)' --to "$TARGET"
             fi
           ''
           "jj-tug"
