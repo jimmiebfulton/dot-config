@@ -112,6 +112,7 @@ in
     vivid
     yaml-language-server
     yazi
+    yt-dlp
     zoxide
   ];
 }
