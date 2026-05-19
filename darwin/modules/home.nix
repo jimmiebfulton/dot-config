@@ -76,6 +76,11 @@
         immutable_heads = "builtin_immutable_heads() | dev";
       };
 
+      # Replaces the deprecated `jj git push --allow-new`: auto-track any new
+      # bookmark on push so plain `jj git push` (the `gpn` alias) keeps
+      # creating new remote bookmarks. "glob:*" matches all bookmark names.
+      remotes.origin.auto-track-bookmarks = "glob:*";
+
       aliases = {
         ci = ["commit" "-m" "initial commit"];
         dds = ["diff" "--tool" "difft-s"];
@@ -92,7 +97,6 @@
         gf = ["git" "fetch"];
         gp = ["git" "push"];
         gpa = ["git" "push" "--all"];
-        gpn = ["git" "push" "--allow-new"];
         rao = ["git" "remote" "add" "origin"];
         rro = ["git" "remote" "remove" "origin"];
         rd = ["rebase" "-d" "dev"];
