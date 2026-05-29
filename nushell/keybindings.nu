@@ -477,6 +477,13 @@ let keybindings = [
       event: { send: executehostcommand cmd: "zi" }
     }
     {
+      name: zoxide_insert_path
+      modifier: alt
+      keycode: char_p
+      mode: [emacs, vi_normal, vi_insert]
+      event: { send: executehostcommand cmd: "let p = (try { ^zoxide query --interactive | str trim } catch { '' }); if ($p | is-not-empty) { commandline edit --insert $\"'($p)'\" }" }
+    }
+    {
       name: edit
       modifier: alt
       keycode: char_e
