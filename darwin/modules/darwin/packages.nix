@@ -70,6 +70,7 @@ in
     kustomize
     lazygit
     lazyjj
+    llama-cpp
     lua
     lua-language-server
     luarocks
