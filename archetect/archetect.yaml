@@ -1,6 +1,10 @@
 locals:
+  enabled: true
   paths:
+    # archetect-common holds the canonical shared libraries (author, org, project,
+    # ports, archive, etc.); list it first so those resolve to the open-source copies.
     - /Users/jimmie/personal/archetect-common/
+    - /Users/jimmie/work/p6m-archetypes3/
     - /Users/jimmie/personal/archetect-rust/
 
 catalog:
@@ -9,4 +13,4 @@ catalog:
     source: "https://github.com/archetect/archetect-catalog.git"
   p6m:
     description: "P6M Catalog"
-    source: "/Users/jimmie/work/p6m-archetypes3/p6m.catalog"
+    source: "git@github.com:p6m-archetypes/p6m-catalog.git#dev"

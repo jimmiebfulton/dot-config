@@ -227,7 +227,7 @@
     [signing]
     backend = "ssh"
     key = "~/.ssh/id_ed25519_work"
-    sign-all = true
+    behavior = "own"
   '';
 
   # TODO: https://www.youtube.com/watch?v=XuQVbZ0wENE
