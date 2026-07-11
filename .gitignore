@@ -18,3 +18,13 @@ swiftpm/
 .android/
 cos/
 
+# Home-manager-generated files. $XDG_CONFIG_HOME is this repo, so HM writes
+# its generated symlinks into the working tree. They point into /nix/store and
+# change on every `darwin-rebuild switch`, so they must never be committed
+# (a committed store path gets GC'd and dangles on other machines).
+# Source of truth: darwin/modules/home.nix
+git/config
+git/work.inc
+jj/config.toml
+jj/conf.d/work.toml
+
