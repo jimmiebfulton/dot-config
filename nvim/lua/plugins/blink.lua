@@ -1,6 +1,7 @@
 return {
   "saghen/blink.cmp",
   dependencies = {
+    { "saghen/blink.lib" },
     { "xzbdmw/colorful-menu.nvim" },
   },
   lazy = false,
