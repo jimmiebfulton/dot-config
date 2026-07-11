@@ -45,7 +45,6 @@
       "raycast"
       "whatsapp"
       "parallels"
-      "rancher"
       "signal"
       "slack"
       "wezterm"

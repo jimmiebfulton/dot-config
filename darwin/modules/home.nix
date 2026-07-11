@@ -289,7 +289,6 @@ fi
     "$HOME/bin"
     "$HOME/go/bin"
     "$HOME/.local/bin"
-    "$HOME/.rd/bin"
   ];
 
   # Bootstrap Claude Code native installer (self-manages updates afterward)
