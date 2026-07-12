@@ -10,6 +10,7 @@ gh/
 goose/
 neofetch/
 zsh/.zcompdump
+carapace/bridge/zsh/.zcompdump_capture
 zsh/local.zsh
 nushell/local.nu
 jj/repos/
