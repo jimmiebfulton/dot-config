@@ -41,13 +41,10 @@ in
     bash-language-server
     bat
     carapace
-    colima
     coreutils-prefixed
     curl
     delta
     difftastic
-    docker
-    docker-compose
     dotnet-sdk
     eza
     fd
