@@ -6,7 +6,8 @@
 
     onActivation = {
       autoUpdate = false;  # don't run `brew update` (taps are managed by nix-homebrew)
-      upgrade = true;      # run `brew upgrade` on darwin-rebuild
+      upgrade = false;     # don't mass-upgrade casks on every rebuild (each cask
+                           # upgrade prompts for sudo; run `brew upgrade` manually)
       cleanup = "zap";     # remove unlisted packages
       # Homebrew 6.0 refuses to load formulae from untrusted third-party
       # taps (archetect, atlassian/acli, nikitabobko, p6m-dev), which aborts
@@ -14,6 +15,11 @@
       # `brew trust` interactively, so opt out declaratively.
       extraEnv = {
         HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
+        # Skip Homebrew's automatic post-install `brew cleanup`, which can
+        # self-deadlock during activation (it tries to autoremove a still-locked
+        # dependency, e.g. libffi, and reports the upgrade as failed). Unlisted
+        # packages are still reconciled by onActivation.cleanup = "zap".
+        HOMEBREW_NO_INSTALL_CLEANUP = "1";
       };
     };
     
