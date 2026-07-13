@@ -8,6 +8,13 @@
       autoUpdate = false;  # don't run `brew update` (taps are managed by nix-homebrew)
       upgrade = true;      # run `brew upgrade` on darwin-rebuild
       cleanup = "zap";     # remove unlisted packages
+      # Homebrew 6.0 refuses to load formulae from untrusted third-party
+      # taps (archetect, atlassian/acli, nikitabobko, p6m-dev), which aborts
+      # `brew bundle` during activation. Activation runs under sudo and can't
+      # `brew trust` interactively, so opt out declaratively.
+      extraEnv = {
+        HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
+      };
     };
     
     taps = [
