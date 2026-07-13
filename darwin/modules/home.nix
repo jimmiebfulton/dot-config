@@ -289,6 +289,7 @@ fi
     "$HOME/bin"
     "$HOME/go/bin"
     "$HOME/.local/bin"
+    "$HOME/.orbstack/bin"
   ];
 
   # Bootstrap Claude Code native installer (self-manages updates afterward)

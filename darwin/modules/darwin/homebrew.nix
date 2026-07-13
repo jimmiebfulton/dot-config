@@ -55,6 +55,7 @@
       "karabiner-elements"
       "microsoft-office"
       "microsoft-teams"
+      "orbstack"       # Docker/Linux VM runtime (provides docker CLI in ~/.orbstack/bin)
       "raycast"
       "whatsapp"
       "parallels"
