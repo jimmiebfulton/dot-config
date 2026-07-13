@@ -61,6 +61,13 @@
             enable = true;
             enableRosetta = false;
             user = "jimmie";
+            # Fully declarative (symlinked) taps. macOS 26 Tahoe ships
+            # openrsync as /usr/bin/rsync, which exits 23 syncing the
+            # read-only nix-store tap sources; with mutableTaps = true
+            # that aborts `setup-homebrew` (set -euo pipefail), which
+            # aborts the whole darwin activation before /run/current-system
+            # and home-manager are updated. Immutable taps skip rsync.
+            mutableTaps = false;
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
