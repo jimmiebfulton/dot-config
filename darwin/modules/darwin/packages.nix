@@ -67,6 +67,7 @@ in
     kind
     kubectl
     kubectx
+    kubernetes-helm
     kustomize
     lazygit
     lazyjj
