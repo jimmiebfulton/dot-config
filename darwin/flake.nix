@@ -53,6 +53,9 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          # Back up (rather than abort on) pre-existing files that
+          # home-manager wants to manage, e.g. a stray ~/.zprofile.
+          home-manager.backupFileExtension = "hm-backup";
           home-manager.users.jimmie = import ./modules/home.nix;
         }
         nix-homebrew.darwinModules.nix-homebrew
