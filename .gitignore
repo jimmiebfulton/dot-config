@@ -19,6 +19,14 @@ swiftpm/
 .android/
 cos/
 
+# Homebrew 6.0 tap-trust state (trust.json + its lock), written by `brew trust`
+# at 0600. Machine-local runtime state, not configuration.
+homebrew/
+
+# Scratch state written by a local proof-of-concept; contains an authority
+# token, and this repo is public.
+provider-poc/
+
 # Home-manager-generated files. $XDG_CONFIG_HOME is this repo, so HM writes
 # its generated symlinks into the working tree. They point into /nix/store and
 # change on every `darwin-rebuild switch`, so they must never be committed
