@@ -119,6 +119,16 @@
         ];
         # Move nearest ancestor bookmark to exactly where specified (precise)
         tugto = ["bookmark" "move" "--from" "closest_bookmark(@)"];
+        # On-demand signature markers: a normal `jj log` plus [✓︎]/[?]/[x].
+        # Verification shells out per commit, so this stays opt-in rather than
+        # living in ui.show-cryptographic-signatures. Takes any `jj log` args.
+        sigs = ["log" "--config" "ui.show-cryptographic-signatures=true"];
+        # Policy audit: prints ONLY unsigned commits, nothing for signed ones,
+        # so no output means clean. Presence check, so no crypto shell-out.
+        # Setting revsets.log (not `-r`) keeps `-r` overriding rather than
+        # unioning, so bare `jj unsigned` audits mine() and `jj unsigned -r X`
+        # narrows to X.
+        unsigned = ["log" "--no-graph" "--config" "revsets.log=mine()" "-T" "unsigned_only"];
       };
 
       colors = {
@@ -129,10 +139,30 @@
 
       template-aliases = {
         "format_short_id(id)" = "id.shortest(5)";
+
+        # Emits nothing at all for signed commits, so the output is exactly the
+        # set of violations. Presence check only — fast, no ssh-keygen shell-out.
+        unsigned_only = ''
+          if(self.signature(), "", separate(" ",
+            format_short_id(commit_id),
+            author.timestamp().format("%Y-%m-%d"),
+            author.email().local(),
+            description.first_line()
+          ) ++ "\n")
+        '';
       };
 
       git = {
         private-commits = "description(glob:'wip:*') | description(glob:'private:*')";
+      };
+
+      signing = {
+        # We sign with ssh, but GitHub signs its own merge/squash commits with
+        # GPG. jj shells out to bare `gpg` to verify those, and gpg is not on
+        # PATH here — without this, `jj sigs` renders a "Failed to run GPG"
+        # error string in place of the marker on every GitHub-merged commit.
+        # Mirrors gpg.openpgp.program in the generated gitconfig.
+        backends.gpg.program = "${pkgs.gnupg}/bin/gpg";
       };
 
       templates = {
@@ -228,6 +258,13 @@
     backend = "ssh"
     key = "~/.ssh/id_ed25519_work"
     behavior = "own"
+
+    [signing.backends.ssh]
+    # Without this, `jj sigs` reports every signature as "unknown" ([?]) because
+    # `ssh-keygen -Y verify` has no principals to check against. Same file git
+    # uses via gpg.ssh.allowedSignersFile in work.inc. Costs nothing when `jj
+    # sigs` is not the command being run.
+    allowed-signers = "~/.config/git/allowed_signers"
   '';
 
   # TODO: https://www.youtube.com/watch?v=XuQVbZ0wENE
