@@ -16,4 +16,8 @@ catalog:
     source: "https://github.com/archetect/archetect-catalog.git"
   anemnez:
     description: "Anemnez Catalog"
-    source: "/Users/jimmie/personal/anemnez/anemnez-catalog"
+    # The published catalog, like the two above. A local path resolves only on this machine and
+    # silently shadows what everyone else renders; the catalog is now a repo, so point at it.
+    # Swap back to "/Users/jimmie/personal/anemnez/anemnez-catalog" while actively editing entries,
+    # then swap forward once they are pushed.
+    source: "ssh://git@github.com/anemnez/anemnez-catalog.git"

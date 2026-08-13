@@ -1,0 +1,9 @@
+# ~/.config/prova/config.toml — local `prova init` catalog entries (layered over the built-ins).
+
+# The checklist archetype, from its local checkout while it is unreleased. Once the repo is
+# published and registered (release → archetypes/checklist.toml in prova-rs/package-registry),
+# DELETE this entry: the bare key then resolves through the registry, pinned to the released tag,
+# and this unpinned local path would silently shadow it.
+[init.checklist]
+description = "An ephemeral coordination checklist — a promises-first suite whose terminal state is deletion"
+source      = "/Users/jimmie/personal/prova-rs/prova-init-checklist-archetype"
