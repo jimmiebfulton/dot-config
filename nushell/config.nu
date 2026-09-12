@@ -46,6 +46,7 @@ use "~/.config/nushell/jj.nu" *
 use "~/.config/nushell/prompt.nu" *
 use "~/.config/nushell/alias.nu" *
 use "~/.config/nushell/functions.nu" *
+use "~/.config/nushell/scripts/cargo-gc.nu"
 
 source "~/.config/nushell/zoxide.nu"
 source "~/.config/nushell/carapace.nu"
