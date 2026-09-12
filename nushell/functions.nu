@@ -104,3 +104,15 @@ export def --wrapped clpr [...args] {
 export def --wrapped clwr [...args] {
   claude-work --resume ...$args
 }
+
+export def --wrapped claude-substrate [...args] {
+  with-env { CLAUDE_CONFIG_DIR: ($env.HOME | path join ".claude-substrate") } { claude --dangerously-skip-permissions --disallowedTools "Bash,Read,Write,Edit,Grep,Glob,NotebookEdit,WebFetch,WebSearch" ...$args }
+}
+
+export def --wrapped cls [...args] {
+  claude-substrate ...$args
+}
+
+export def --wrapped clsr [...args] {
+  claude-substrate --resume ...$args
+}
