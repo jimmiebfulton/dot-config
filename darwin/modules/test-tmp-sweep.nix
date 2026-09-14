@@ -9,9 +9,10 @@
 # sandboxes whenever cleanup never runs (mem::forget, TempDir::keep, a nextest
 # timeout kill), and on 2026-09-13 ~70k of them filled the disk (~1 TB).
 #
-# Hourly, top-level entries untouched for 2h that no process holds open are
-# removed. The directory is recreated on every run: tempfile fails outright
-# when TMPDIR does not exist.
+# Every 15 minutes, top-level entries untouched for 1h that no process holds
+# open are removed. The first measurement after redirecting was 12 GB in ten
+# minutes, so the window is kept short. The directory is recreated on every
+# run: tempfile fails outright when TMPDIR does not exist.
 let
   root = "${config.home.homeDirectory}/.cache/test-tmp";
   log = "${config.home.homeDirectory}/Library/Logs/test-tmp-sweep.log";
@@ -22,7 +23,7 @@ let
     work=$(mktemp -d)
     trap 'rm -rf "$work"' EXIT
 
-    ${pkgs.fd}/bin/fd -H -I --max-depth 1 --changed-before 2h . "$root" \
+    ${pkgs.fd}/bin/fd -H -I --max-depth 1 --changed-before 1h . "$root" \
       | sed 's|/$||' | sort > "$work/stale"
     /usr/sbin/lsof -Fn 2>/dev/null \
       | sed -n "s|^n\($root/[^/]*\).*|\1|p" | sort -u > "$work/open"
@@ -37,7 +38,7 @@ in
     enable = true;
     config = {
       ProgramArguments = [ "${sweep}" ];
-      StartInterval = 3600;
+      StartInterval = 900;
       RunAtLoad = true;
       ProcessType = "Background";
       LowPriorityIO = true;
