@@ -103,6 +103,9 @@ in
     pyright
     ripgrep
     ripgrep-all
+    # Apollo's CLI. The ybor-studio prova topology shells out to it to compose the router's
+    # supergraph at factory time, in BOTH lanes — without it the stack dies mid-build.
+    rover
     rustup
     starship
     telegram-desktop
