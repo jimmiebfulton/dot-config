@@ -116,3 +116,6 @@ export def --wrapped cls [...args] {
 export def --wrapped clsr [...args] {
   claude-substrate --resume ...$args
 }
+
+# `cl <Name>` / `clr <Name>` live in the agents repo so every node shares one definition.
+export use ~/personal/anemnez/agents/.substrate/agents.nu *
