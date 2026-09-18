@@ -117,5 +117,18 @@ export def --wrapped clsr [...args] {
   claude-substrate --resume ...$args
 }
 
+# The second Claude Max account (anemnez); log in once with `cla /login`.
+export def --wrapped claude-anemnez [...args] {
+  with-env { CLAUDE_CONFIG_DIR: ($env.HOME | path join ".claude-anemnez") } { claude --dangerously-skip-permissions --disallowedTools "Bash,Read,Write,Edit,Grep,Glob,NotebookEdit,WebFetch,WebSearch" ...$args }
+}
+
+export def --wrapped cla [...args] {
+  claude-anemnez ...$args
+}
+
+export def --wrapped clar [...args] {
+  claude-anemnez --resume ...$args
+}
+
 # `cl <Name>` / `clr <Name>` live in the agents repo so every node shares one definition.
 export use ~/personal/anemnez/agents/.substrate/agents.nu *
