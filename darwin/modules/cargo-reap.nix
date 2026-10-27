@@ -1,25 +1,31 @@
 { config, pkgs, lib, ... }:
 
 # Keeps /Volumes/AIML usable, invariantly, with no grant, no signature and no daemon.
-# User, 2026-10-27 (beekeeper mail:3676): "I want this disk usable ... solved permanently
-# and invariantly."
+# User, 2026-10-27 (beekeeper mail:3676/3734): "I want this disk usable ... solved
+# permanently and invariantly."
 #
 # ~/personal/.cargo/config.toml points every cargo build outside a Substrate pool slot at
 #   build-dir = "/Volumes/AIML/cargo-build/personal/{workspace-path-hash}"
 # so each workspace grows its own full build dir there (70-450 GiB each). Nothing else
-# reclaims them; on 2026-10-26 they held 2.4 TB and blocked landings at the 1000 GiB floor.
+# reclaimed them; on 2026-10-26 they held 2.4 TB and blocked landings at the 1000 GiB floor.
 #
-# Reach: an ALLOW list of exactly one root, /Volumes/AIML/cargo-build/personal. The unit
-# deleted is one workspace build dir, personal/<xx>/<hash>. Never models, never the pool
-# slots (cargo-build/pool, bounded by slot count), never sccache (capped at 60G).
-# A host without the root (no /Volumes/AIML) logs a refusal and does nothing.
-#   age:      a build dir with no file written in 24h is deleted.
-#   pressure: while the volume has < 1100 GiB free, dirs idle >= 2h go until >= 1200 GiB.
+# Reach: an ALLOW list of two roots under /Volumes/AIML/cargo-build, nothing else:
+#   personal/<xx>/<hash>  one workspace build dir: deleted whole.
+#   pool/<n>              one Substrate build-pool slot: its CONTENTS are deleted, the slot
+#                         dir stays (the pool expects it). Costs that slot one cold build.
+# Never models, never sccache (capped at 60G), never anything else on the volume.
+# A host without /Volumes/AIML/cargo-build logs a refusal and does nothing.
+#   age:      a build dir or pool slot with no file written in 24h is reaped.
+#   pressure: while the volume has < 1100 GiB free, personal dirs idle >= 2h go until
+#             >= 1200 GiB. Still under 1100 after that: a macOS notification (ALERT), since
+#             every remaining build dir is in use.
 let
   log = "${config.home.homeDirectory}/Library/Logs/cargo-reap.log";
   reap = pkgs.writeShellScript "cargo-reap" ''
     set -u
-    ROOT=/Volumes/AIML/cargo-build/personal
+    BASE=/Volumes/AIML/cargo-build
+    ROOT=$BASE/personal
+    POOL=$BASE/pool
     VOL=/Volumes/AIML
     IDLE_HOURS=24
     PRESS_HOURS=2
@@ -28,8 +34,11 @@ let
     LOCK=/tmp/cargo-reap.lock
     log() { echo "$(date -u +%FT%TZ) $*"; }
     free_gib() { /bin/df -g "$VOL" | /usr/bin/awk 'NR==2 {print $4}'; }
+    notify() {
+      /usr/bin/osascript -e "display notification \"$1\" with title \"cargo-reap: /Volumes/AIML\" sound name \"Basso\"" 2>/dev/null || true
+    }
 
-    if [ ! -d "$ROOT" ] || [ -L "$ROOT" ]; then log "refuse: $ROOT missing or a symlink"; exit 0; fi
+    if [ ! -d "$BASE" ] || [ -L "$BASE" ]; then log "refuse: $BASE missing or a symlink"; exit 0; fi
     mkdir "$LOCK" 2>/dev/null || { log "skip: another reap holds $LOCK"; exit 0; }
     trap 'rmdir "$LOCK"' EXIT
 
@@ -38,23 +47,39 @@ let
       case "$1" in "$ROOT"/??/*) ;; *) log "refuse: $1 is outside $ROOT/<xx>/<hash>"; return;; esac
       rm -rf -- "$1" && log "deleted $1 ($2)" || log "FAILED $1"
     }
+    reap_slot() {
+      case "$1" in "$POOL"/[0-9]*) ;; *) log "refuse: $1 is not a pool slot $POOL/<n>"; return;; esac
+      if [ -z "$(/bin/ls -A "$1" 2>/dev/null)" ]; then return; fi
+      /usr/bin/find "$1" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} + && log "emptied pool slot $1 ($2)" || log "FAILED $1"
+    }
 
     before=$(free_gib)
     log "start: $before GiB free"
-    for d in "$ROOT"/??/*/; do
-      d=''${d%/}
-      if [ -d "$d" ] && [ ! -L "$d" ] && idle_for "$d" "$IDLE_HOURS"; then reap "$d" "idle >= $IDLE_HOURS h"; fi
-    done
-    if [ "$(free_gib)" -lt "$LOW_GIB" ]; then
+    if [ -d "$ROOT" ] && [ ! -L "$ROOT" ]; then
+      for d in "$ROOT"/??/*/; do
+        d=''${d%/}
+        if [ -d "$d" ] && [ ! -L "$d" ] && idle_for "$d" "$IDLE_HOURS"; then reap "$d" "idle >= $IDLE_HOURS h"; fi
+      done
+    fi
+    if [ -d "$POOL" ] && [ ! -L "$POOL" ]; then
+      for s in "$POOL"/[0-9]*/; do
+        s=''${s%/}
+        if [ -d "$s" ] && [ ! -L "$s" ] && idle_for "$s" "$IDLE_HOURS"; then reap_slot "$s" "idle >= $IDLE_HOURS h"; fi
+      done
+    fi
+    if [ "$(free_gib)" -lt "$LOW_GIB" ] && [ -d "$ROOT" ]; then
       log "pressure: $(free_gib) GiB < $LOW_GIB; reaping dirs idle >= $PRESS_HOURS h"
       for d in "$ROOT"/??/*/; do
         [ "$(free_gib)" -ge "$HIGH_GIB" ] && break
         d=''${d%/}
         if [ -d "$d" ] && [ ! -L "$d" ] && idle_for "$d" "$PRESS_HOURS"; then reap "$d" "pressure, idle >= $PRESS_HOURS h"; fi
       done
-      [ "$(free_gib)" -lt "$LOW_GIB" ] && log "ALERT: still $(free_gib) GiB free after reaping; every remaining build dir is live"
     fi
-    /usr/bin/find "$ROOT" -mindepth 1 -maxdepth 1 -type d -empty -delete 2>/dev/null
+    if [ "$(free_gib)" -lt "$LOW_GIB" ]; then
+      log "ALERT: still $(free_gib) GiB free after reaping; every remaining build dir is in use"
+      notify "Only $(free_gib) GiB free after reaping. Every build dir is in use; see ~/Library/Logs/cargo-reap.log"
+    fi
+    [ -d "$ROOT" ] && /usr/bin/find "$ROOT" -mindepth 1 -maxdepth 1 -type d -empty -delete 2>/dev/null
     log "end: $(free_gib) GiB free (was $before)"
   '';
 in
