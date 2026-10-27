@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./test-tmp-sweep.nix ];
+  imports = [ ./test-tmp-sweep.nix ./cargo-reap.nix ];
 
   # Home Manager needs a bit of information about you and the paths it should manage
   home.username = "jimmie";
