@@ -237,7 +237,7 @@
         signingkey = /Users/jimmie/.ssh/id_ed25519_work.pub
 
     [core]
-        sshCommand = "ssh -F /dev/null -i ~/.ssh/id_ed25519_work"
+        sshCommand = "ssh -F /dev/null -i ~/.ssh/id_ed25519_work -o IdentitiesOnly=yes"
 
     [gpg]
         format = ssh
